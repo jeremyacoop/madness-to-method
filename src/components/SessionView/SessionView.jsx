@@ -16,6 +16,7 @@ function SessionView() {
 
     return (
         <>
+        <div>Placeholder</div>
         </>
     )
 }
