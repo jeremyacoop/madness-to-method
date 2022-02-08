@@ -21,7 +21,6 @@ function* fetchBookmarks() {
 
 function* bookmarkSaga() {
     console.log('Help');
-    console.log(`I'm trapped in an IDE`);
     yield takeEvery('FETCH_BOOKMARKS', fetchBookmarks);
 }
 
