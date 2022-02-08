@@ -3,8 +3,8 @@ import { takeEvery, put } from 'redux-saga/effects';
 
 function* fetchBookmarks() {
     try{
-        let response = axios.get('/bookmarks')
-        console.log('Response:', response.data);
+        let response = yield axios.get('/bookmarks')
+        console.log('Response:', response);
         yield put({
             type:   'SET_BOOKMARKS',
             payload:    response.data

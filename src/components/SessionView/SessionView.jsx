@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -7,7 +7,6 @@ function SessionView() {
     const bookmarks = useSelector(store => store.bookmarksReducer);
 
     const fetchBookmarks = () => {
-        console.log('Peekaboo');
         dispatch({
             type: 'FETCH_BOOKMARKS',
         })
@@ -19,9 +18,21 @@ function SessionView() {
 
     return (
         <>
-            <div>Placeholder 
-                {JSON.stringify(bookmarks)}
-            </div>
+        <div>There's supposed to be text under this.</div>
+        <div>{JSON.stringify(bookmarks)}</div>
+            {/*<table>
+                <thead>Bookmark Session
+                <th>Title</th>
+                <th>Link</th></thead>
+                <tbody classId="default-list">
+                    {bookmarks.map(bookmark => (
+                        <tr key={bookmark.id}>
+                            <td>{bookmark.title}</td>
+                            <td>{bookmark.link}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>*/}
         </>
     )
 }
