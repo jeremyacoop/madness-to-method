@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './LandingPage.css';
-import SessionView from '../SessionView/SessionView';
 
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
@@ -63,12 +62,6 @@ function LandingPage() {
           </center>
         </div>
       </div>
-          <Route
-            exact
-            path="/bookmarks"
-            >
-              <SessionView />
-            </Route>
     </div>
   );
 }

@@ -5,6 +5,15 @@ const router = express.Router();
 router.get('/', (req, res) => {
   // GET route code here
   console.log('In router GET');
+  const queryText = `SELECT * FROM "links";`;
+  pool.query(queryText)
+  .then((result) => {
+    res.send(result.rows);
+  })
+  .catch((err) => {
+    console.log('Cannot retrieve bookmarks from db.', err);
+    res.sendStatus(500);
+  })
 });
 
 /**

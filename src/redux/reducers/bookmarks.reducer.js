@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 
-const bookmarksReducer = (state = '', action) {
+const bookmarksReducer = (state = [], action) => {
     switch (action.type) {
-        case    'FETCH_BOOKMARKS':
+        case    'SET_BOOKMARKS':
             return [...state, action.payload]
             default: return state;
     }
