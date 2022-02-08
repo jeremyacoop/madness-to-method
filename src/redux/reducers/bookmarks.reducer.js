@@ -9,6 +9,4 @@ const bookmarksReducer = (state = [], action) => {
 
 }
 
-export default combineReducers({
-    bookmarksReducer
-});
+export default bookmarksReducer;

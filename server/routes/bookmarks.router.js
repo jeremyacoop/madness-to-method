@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
   const queryText = `SELECT * FROM "links";`;
   pool.query(queryText)
   .then((result) => {
+    console.log(result);
     res.send(result.rows);
   })
   .catch((err) => {

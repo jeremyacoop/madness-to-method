@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 function SessionView() {
     const dispatch = useDispatch();
-    const bookmarks = useSelector(store => store.bookmarksReducer);
+    const bookmarks = useSelector(store => store.bookmarks);
 
     const fetchBookmarks = () => {
         dispatch({
@@ -18,12 +18,10 @@ function SessionView() {
 
     return (
         <>
-        <div>There's supposed to be text under this.</div>
-        <div>{JSON.stringify(bookmarks)}</div>
-            {/*<table>
-                <thead>Bookmark Session
+            <table>
+                <thead>Bookmark Session</thead>
                 <th>Title</th>
-                <th>Link</th></thead>
+                <th>Link</th>
                 <tbody classId="default-list">
                     {bookmarks.map(bookmark => (
                         <tr key={bookmark.id}>
@@ -32,7 +30,7 @@ function SessionView() {
                         </tr>
                     ))}
                 </tbody>
-            </table>*/}
+            </table>
         </>
     )
 }
