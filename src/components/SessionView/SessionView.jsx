@@ -18,12 +18,17 @@ function SessionView() {
 
     return (
         <>
+            <h3>Bookmark Session</h3>
             <table>
-                <thead>Bookmark Session</thead>
-                <th>Title</th>
-                <th>Link</th>
-                <tbody classId="default-list">
-                    {bookmarks.map(bookmark => (
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    {console.log(bookmarks),
+                    bookmarks.map((bookmark) => (
                         <tr key={bookmark.id}>
                             <td>{bookmark.title}</td>
                             <td>{bookmark.link}</td>
