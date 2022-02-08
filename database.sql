@@ -11,10 +11,10 @@ CREATE TABLE "user" (
 
 CREATE TABLE "links" (
 	"id" serial NOT NULL,
-	"header" varchar(512),
+	"title" varchar(512),
 	"link" varchar(1000),
 	"importantMark" bool DEFAULT false,
-	"priority" char NOT NULL,
+	"priority" char,
 	"image" varchar(255),
 	"notes" varchar(2048),
 	"session_id" int,
