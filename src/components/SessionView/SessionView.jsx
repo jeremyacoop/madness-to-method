@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import './SessionView.css';
 
 function SessionView() {
     const dispatch = useDispatch();
@@ -27,11 +28,11 @@ function SessionView() {
                     </tr>
                 </thead>
                 <tbody> 
-                    {console.log(bookmarks),
-                    bookmarks.map((bookmark) => (
+                    {bookmarks.map((bookmark) => (
                         <tr key={bookmark.id}>
                             <td>{bookmark.title}</td>
                             <td>{bookmark.link}</td>
+                            <td>{bookmark.priority}</td>
                         </tr>
                     ))}
                 </tbody>
