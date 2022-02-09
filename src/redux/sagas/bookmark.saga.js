@@ -19,9 +19,15 @@ function* fetchBookmarks() {
     }
 }
 
+function* addBookmark() {
+    console.log('In addBookmark');
+    axios.post('/bookmarks')
+}
+
 function* bookmarkSaga() {
     console.log('Help');
     yield takeEvery('FETCH_BOOKMARKS', fetchBookmarks);
+    yield takeEvery('ADD_BOOKMARK', addBookmark);
 }
 
 export default bookmarkSaga;

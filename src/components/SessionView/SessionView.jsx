@@ -26,6 +26,7 @@ function SessionView() {
                         <th>Title</th>
                         <th>Link</th>
                         <th>Priority</th>
+                        <th>Notes</th>
                     </tr>
                 </thead>
                 <tbody className="bookmarks-list"> 
@@ -34,6 +35,7 @@ function SessionView() {
                             <td>{bookmark.title}</td>
                             <td>{bookmark.link}</td>
                             <td>{bookmark.priority}</td>
+                            <td>{bookmark.notes}</td>
                         </tr>
                     ))}
                 </tbody>

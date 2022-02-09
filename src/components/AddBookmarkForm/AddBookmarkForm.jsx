@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import './AddBookmarkForm.css';
 
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
@@ -67,21 +68,21 @@ function AddBookmarkForm() {
                     <select 
                         name="priority" id="item-priority"
                         className="form-control"
-                        onChange={evt => setBookmarkPriority} 
+                        onChange={evt => setBookmarkPriority(evt.target.value)} 
                         >
-                        <option value=""></option>
-                        <option value="A"></option>
-                        <option value="B"></option>
-                        <option value="C"></option>
-                        <option value="D"></option>
+                        <option value="">_</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
                     </select>
                     <input 
-                        type="text" 
+                        type="textarea" 
                         id="bookmark-notes"
                         className="form-control"
                         placeholder="Notes"
                         value={bookmarkNotes} 
-                        onChange={evt => setBookmarkNotes} 
+                        onChange={evt => setBookmarkNotes(evt.target.value)} 
                     />
                     <button type="submit">Add Bookmark</button>
               </form>
