@@ -10,7 +10,7 @@ function SessionView() {
     const fetchBookmarks = () => {
         dispatch({
             type: 'FETCH_BOOKMARKS',
-        })
+        });
     }
 
     useEffect(() => {
