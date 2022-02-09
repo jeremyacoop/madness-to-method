@@ -4,15 +4,15 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   // GET route code here
-  console.log('In router GET');
-  const queryText = `SELECT * FROM "links";`;
+  console.log('In sessions router GET');
+  const queryText = `SELECT * FROM "sessions";`;
   pool.query(queryText)
   .then((result) => {
-    // console.log(result);
+    console.log(result);
     res.send(result.rows);
   })
   .catch((err) => {
-    console.log('Cannot retrieve bookmarks from db.', err);
+    console.log('Cannot retrieve sessions from db.', err);
     res.sendStatus(500);
   })
 });
@@ -25,4 +25,5 @@ router.post('/', (req, res) => {
 });
 
 module.exports = router;
+
 
