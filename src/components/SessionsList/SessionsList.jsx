@@ -8,7 +8,7 @@ function SessionsList() {
     const dispatch = useDispatch();
   // Using hooks we're creating local state for a "heading" variable with
   // a default value of 'Functional Component'
-    const store = useSelector((store) => store);
+    const store = useSelector((store) => store.sessions);
     const [heading, setHeading] = useState('Sessions');
     const [sessionName, setSessionName] = useState('');
 
@@ -29,7 +29,7 @@ function SessionsList() {
                 <h2>{heading}</h2>
             </div>
             <div>
-
+                {JSON.stringify(sessionName)}
             </div>
 
         </section>
