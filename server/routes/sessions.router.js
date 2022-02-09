@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   // GET route code here
-  console.log('In router GET');
+  console.log('In sessions router GET');
   const queryText = `SELECT * FROM "sessions";`;
   pool.query(queryText)
   .then((result) => {

@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 
 const sessionsReducer = (state = [], action) => {
     switch (action.type) {
-        case    'SET_SESSION':
+        case    'SET_SESSIONS':
             return action.payload
             default: return state;
     }
