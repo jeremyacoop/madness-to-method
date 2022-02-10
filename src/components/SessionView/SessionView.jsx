@@ -17,6 +17,9 @@ function SessionView() {
         fetchBookmarks();
     }, []);
 
+    const deleteBookmark = (id) => {
+        console.log('In deleteBookmark', id);
+    }
 
     return (
         <>
@@ -37,6 +40,12 @@ function SessionView() {
                             <td>{bookmark.link}</td>
                             <td>{bookmark.priority}</td>
                             <td>{bookmark.notes}</td>
+                            <td>
+                                <button 
+                                onClick={evt => deleteBookmark(bookmark.id)}>
+                                    DELETE
+                                    </button>
+                                    </td>
                         </tr>
                     ))}
                 </tbody>
