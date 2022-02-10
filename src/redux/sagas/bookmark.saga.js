@@ -32,10 +32,24 @@ function* addBookmark(action) {
     }
 }
 
+function* deleteBookmark(action) {
+    try {
+        console.log('In deleteBookmark');
+        yield axios.delete(`/bookmarks/${action.id}`);
+        yield put({
+            type:   'FETCH_BOOKMARKS'
+        });
+    }
+    catch (err) {
+        console.error('DELETE bookmark failed!', err);
+    }
+}
+
 function* bookmarkSaga() {
     console.log('Help');
     yield takeEvery('FETCH_BOOKMARKS', fetchBookmarks);
     yield takeEvery('ADD_BOOKMARK', addBookmark);
+    yield takeEvery('DELETE_BOOKMARK', deleteBookmark);
 }
 
 export default bookmarkSaga;
