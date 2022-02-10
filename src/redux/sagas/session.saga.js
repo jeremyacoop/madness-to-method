@@ -19,9 +19,23 @@ function* fetchSessions() {
     }
 }
 
+function* addSession(action) {
+    console.log('In addSession saga', action);
+    try {
+        yield axios.post('/sessions', action.payload);
+        yield put({
+            type:   'FETCH_SESSIONS'
+        });
+    }
+    catch (err) {
+        console.log('Error in addSession', err);
+    }
+}
+
 function* sessionSaga() {
     console.log('Help');
     yield takeEvery('FETCH_SESSIONS', fetchSessions);
+    yield takeEvery('ADD_SESSION', addSession);
 }
 
 export default sessionSaga;
