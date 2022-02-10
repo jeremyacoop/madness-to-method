@@ -17,6 +17,7 @@ function SessionView() {
         fetchBookmarks();
     }, []);
 
+
     return (
         <>
             <h3>Bookmark Session</h3>

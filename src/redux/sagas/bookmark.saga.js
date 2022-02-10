@@ -19,9 +19,17 @@ function* fetchBookmarks() {
     }
 }
 
-function* addBookmark() {
-    console.log('In addBookmark');
-    axios.post('/bookmarks')
+function* addBookmark(action) {
+    console.log('In addBookmark saga', action);
+    try {
+        yield axios.post('/bookmarks', action.payload);
+        yield put({
+            type:   'FETCH_BOOKMARKS'
+        });
+    }
+    catch (err) {
+        console.log('Error in addBookmark', err);
+    }
 }
 
 function* bookmarkSaga() {
