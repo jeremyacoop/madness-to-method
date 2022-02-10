@@ -23,6 +23,14 @@ function SessionsList() {
         fetchSessions();
     }, []);
 
+    const deleteSession = (id) => {
+        console.log('In deleteSession', id);
+        dispatch({
+            type:   'DELETE_SESSION',
+            id: id
+        });
+    }
+
     return (
         <section>
             <div>
@@ -39,6 +47,7 @@ function SessionsList() {
                     {sessions.map((session) => (
                         <tr key={session.id}>
                             <td>{session.title}</td>
+                            <td><button onClick={evt => deleteSession(session.id)}>X</button></td>
                         </tr>
                     ))}
                 </tbody>

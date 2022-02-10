@@ -13,7 +13,6 @@ const bookmarksReducer = (state = [], action) => {
         //     })
             default: return state;
     }
-
 }
 
 export default bookmarksReducer;

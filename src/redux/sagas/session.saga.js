@@ -32,10 +32,24 @@ function* addSession(action) {
     }
 }
 
+function* deleteSession(action) {
+    try {
+        console.log('In deleteSession');
+        yield axios.delete(`/sessions/${action.id}`);
+        yield put({
+            type:   'FETCH_SESSIONS'
+        });
+    }
+    catch (err) {
+        console.error('DELETE session failed!', err);
+    }
+}
+
 function* sessionSaga() {
     console.log('Help');
     yield takeEvery('FETCH_SESSIONS', fetchSessions);
     yield takeEvery('ADD_SESSION', addSession);
+    yield takeEvery('DELETE_SESSION', deleteSession);
 }
 
 export default sessionSaga;
