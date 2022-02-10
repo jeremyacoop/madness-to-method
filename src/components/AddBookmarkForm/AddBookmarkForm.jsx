@@ -2,13 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import './AddBookmarkForm.css';
 
-// Basic functional component structure for React with default state
-// value setup. When making a new component be sure to replace the
-// component name TemplateFunction with the name for the new component.
 function AddBookmarkForm() {
     const dispatch = useDispatch();
-    // Using hooks we're creating local state for a "heading" variable with
-    // a default value of 'Functional Component'
     const [heading, setHeading] = useState('Add Bookmark');
     const [bookmarkTitle, setBookmarkTitle] = useState('');
     const [bookmarkLink, setBookmarkLink] = useState('');

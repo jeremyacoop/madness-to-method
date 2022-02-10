@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux';
 import SessionView from '../SessionView/SessionView';
 import SessionsList from '../SessionsList/SessionsList';
 import AddBookmarkForm from '../AddBookmarkForm/AddBookmarkForm';
+import AddSessionForm from '../AddSessionForm/AddSessionForm';
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -18,6 +19,9 @@ function UserPage() {
     <div>
     <div>
       <AddBookmarkForm />
+    </div>
+    <div>
+      <AddSessionForm />
     </div>
     <div>
       <SessionsList />
