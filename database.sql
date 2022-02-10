@@ -1,45 +1,49 @@
-
--- USER is a reserved keyword with Postgres
--- You must use double quotes in every query that user is in:
--- ex. SELECT * FROM "user";
--- Otherwise you will have errors!
 CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
+	"id" serial PRIMARY KEY,
+	"username" VARCHAR(80) UNIQUE NOT NULL,
+	"password" VARCHAR(1000) NOT NULL,
+	"firstName" VARCHAR(100),
+	"lastName" VARCHAR(100),
+	"email" VARCHAR(100)
 );
 
 CREATE TABLE "links" (
-	"id" serial NOT NULL,
-	"title" varchar(512),
-	"link" varchar(1000),
-	"importantMark" bool DEFAULT false,
-	"priority" char,
-	"image" varchar(255),
-	"notes" varchar(2048),
-	"session_id" int,
-	CONSTRAINT "links_pk" PRIMARY KEY ("id")
+	"id" serial PRIMARY KEY,
+	"title" VARCHAR(600),
+	"link" VARCHAR(1000),
+	"importantMark" bool DEFAULT 'false',
+	"priority" CHAR,
+	"image" VARCHAR(300),
+	"notes" VARCHAR(3000),
+	"session_id" INT,
+	"user_id" INT NOT NULL
 );
 
 CREATE TABLE "tags" (
-	"id" serial NOT NULL,
-	"tagCategory" varchar(128) NOT NULL UNIQUE,
-	"user_id" int NOT NULL,
-	"link_id" int NOT NULL,
-	"icon" varchar(255),
-	CONSTRAINT "tags_pk" PRIMARY KEY ("id")
+	"id" serial PRIMARY KEY,
+	"tagCategory" VARCHAR(200) NOT NULL,
+	"user_id" INT,
+	"icon" VARCHAR(300)
 );
 
 CREATE TABLE "sessions" (
-	"id" serial NOT NULL,
-	"tag" varchar(255) NOT NULL,
-	"user_id" int NOT NULL,
-	CONSTRAINT "sessions_pk" PRIMARY KEY ("id")
+	"id" serial PRIMARY KEY,
+	"title" VARCHAR(300) NOT NULL,
+	"user_id" INT
+);
+
+CREATE TABLE "link_tags" (
+	"id" serial PRIMARY KEY,
+	"link_id" serial NOT NULL,
+	"tag_id" serial NOT NULL
 );
 
 ALTER TABLE "links" ADD CONSTRAINT "links_fk0" FOREIGN KEY ("session_id") REFERENCES "sessions"("id");
+ALTER TABLE "links" ADD CONSTRAINT "links_fk1" FOREIGN KEY ("user_id") REFERENCES "user"("id");
 
 ALTER TABLE "tags" ADD CONSTRAINT "tags_fk0" FOREIGN KEY ("user_id") REFERENCES "user"("id");
-ALTER TABLE "tags" ADD CONSTRAINT "tags_fk1" FOREIGN KEY ("link_id") REFERENCES "links"("id");
 
 ALTER TABLE "sessions" ADD CONSTRAINT "sessions_fk0" FOREIGN KEY ("user_id") REFERENCES "user"("id");
+
+ALTER TABLE "link_tags" ADD CONSTRAINT "link_tags_fk0" FOREIGN KEY ("link_id") REFERENCES "links"("id");
+ALTER TABLE "link_tags" ADD CONSTRAINT "link_tags_fk1" FOREIGN KEY ("tag_id") REFERENCES "tags"("id");

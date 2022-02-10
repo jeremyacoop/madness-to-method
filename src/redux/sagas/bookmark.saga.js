@@ -19,10 +19,37 @@ function* fetchBookmarks() {
     }
 }
 
+function* addBookmark(action) {
+    console.log('In addBookmark saga', action);
+    try {
+        yield axios.post('/bookmarks', action.payload);
+        yield put({
+            type:   'FETCH_BOOKMARKS'
+        });
+    }
+    catch (err) {
+        console.log('Error in addBookmark', err);
+    }
+}
+
+function* deleteBookmark(action) {
+    try {
+        console.log('In deleteBookmark');
+        yield axios.delete(`/bookmarks/${action.id}`);
+        yield put({
+            type:   'FETCH_BOOKMARKS'
+        });
+    }
+    catch (err) {
+        console.error('DELETE bookmark failed!', err);
+    }
+}
+
 function* bookmarkSaga() {
     console.log('Help');
-    console.log(`I'm trapped in an IDE`);
     yield takeEvery('FETCH_BOOKMARKS', fetchBookmarks);
+    yield takeEvery('ADD_BOOKMARK', addBookmark);
+    yield takeEvery('DELETE_BOOKMARK', deleteBookmark);
 }
 
 export default bookmarkSaga;
