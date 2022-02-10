@@ -40,7 +40,11 @@ function SessionView() {
                 <tbody className="bookmarks-list"> 
                     {bookmarks.map((bookmark) => (
                         <tr key={bookmark.id}>
-                            <td>{bookmark.title}</td>
+                            <td>
+                                <a target="_blank" href={bookmark.link}>
+                                    {bookmark.title}
+                                </a>
+                            </td>
                             <td>{bookmark.link}</td>
                             <td>{bookmark.priority}</td>
                             <td>{bookmark.notes}</td>
