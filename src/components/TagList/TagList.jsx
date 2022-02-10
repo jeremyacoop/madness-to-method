@@ -5,7 +5,6 @@ function TagList() {
     const dispatch = useDispatch();
     const tags = useSelector((store) => store.tags);
     const [heading, setHeading] = useState('Tags');
-    const [tagName, setTagName] = useState('');
 
     const fetchTags = () => {
         console.log('In fetchTags');
@@ -41,7 +40,7 @@ function TagList() {
                 <tbody className="tag-list">
                     {tags.map((tag) => (
                         <tr key={tag.id}>
-                            <td>{tag.title}</td>
+                            <td>{tag.tagCategory}</td>
                             <td><button onClick={evt => deleteTag(tag.id)}>X</button></td>
                         </tr>
                     ))}

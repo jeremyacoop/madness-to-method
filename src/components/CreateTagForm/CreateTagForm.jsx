@@ -5,29 +5,29 @@ import { useDispatch } from 'react-redux';
 function CreateTagForm() {
     const dispatch = useDispatch();
     const [heading, setHeading] = useState('Create Tag');
-    const [tagTitle, setTagTitle] = useState('');
+    const [tagCategory, setTagCategory] = useState('');
 
     const createTag = (evt) => {
         evt.preventDefault();
-        console.log('Adding tag:', tagTitle);
+        console.log('Adding tag:', tagCategory);
         dispatch({
             type: 'CREATE_TAG',
             payload: {
-                title:    tagTitle,
+                tagCategory:    tagCategory,
             }
         })
         clearTagForm();
     }
 
     const clearTagForm = () => {
-        setTagTitle('');
+        setTagCategory('');
     }
 
     return (
       <div>
         <h2>{heading}</h2>
             <div id="tag-form-labels">
-                <label htmlFor="tag-category">Title</label>
+                <label htmlFor="tag-category">Category</label>
             </div> 
             <div>
                 <form action="submit" className="create-tag-form" onSubmit={(evt) => createTag(evt)}>
@@ -35,7 +35,7 @@ function CreateTagForm() {
                         type="text" 
                         id="tag-category"
                         className="form-control"
-                        placeholder="Title"
+                        placeholder="Category"
                         value={tagCategory} 
                         onChange={evt => setTagCategory(evt.target.value)} 
                     />
