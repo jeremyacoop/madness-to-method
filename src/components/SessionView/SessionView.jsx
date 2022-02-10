@@ -19,6 +19,10 @@ function SessionView() {
 
     const deleteBookmark = (id) => {
         console.log('In deleteBookmark', id);
+        dispatch({
+            type:   'DELETE_BOOKMARK',
+            id: id
+        });
     }
 
     return (

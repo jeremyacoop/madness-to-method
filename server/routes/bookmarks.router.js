@@ -40,5 +40,18 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   }));
 });
 
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+  const queryText = `DELETE FROM "links"
+                      WHERE "id" = $1`;
+  pool.query(queryText, [req.params.id])
+  .then(() => {
+    res.sendStatus(200);
+  })
+  .catch((err) => {
+    console.log('Error in DELETE bookmark', err);
+    res.sendStatus(500);
+  });
+});
+
 module.exports = router;
 
