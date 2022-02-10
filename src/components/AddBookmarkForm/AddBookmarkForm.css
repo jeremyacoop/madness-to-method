@@ -1,0 +1,20 @@
+#bookmark-form-labels {
+    display: flex;
+    align-items: center;
+}
+
+#bookmark-title {
+    margin: 10px;
+}
+
+#bookmark-url {
+    margin: 10px;
+}
+
+#task-priority {
+    margin: 10px;
+}
+
+#task-priority {
+    margin: 10px;
+}

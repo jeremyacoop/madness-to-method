@@ -3,6 +3,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
 import SessionView from '../SessionView/SessionView';
 import SessionsList from '../SessionsList/SessionsList';
+import AddBookmarkForm from '../AddBookmarkForm/AddBookmarkForm';
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -15,6 +16,9 @@ function UserPage() {
       <LogOutButton className="btn" />
     </div>
     <div>
+    <div>
+      <AddBookmarkForm />
+    </div>
     <div>
       <SessionsList />
     </div>
