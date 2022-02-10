@@ -20,7 +20,7 @@ function TagList() {
     const deleteTag = (id) => {
         console.log('In deleteTag', id);
         dispatch({
-            type:   'DELETE_TAGS',
+            type:   'DELETE_TAG',
             id: id
         });
     }
