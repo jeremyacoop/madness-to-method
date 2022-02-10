@@ -27,7 +27,7 @@ function AddBookmarkForm() {
                 notes:    bookmarkNotes
             }
         })
-
+        clearBookmarkForm();
     }
 
     const clearBookmarkForm = () => {

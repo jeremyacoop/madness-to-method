@@ -31,7 +31,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   const queryParams = [req.body.title, req.body.link, req.body.priority, req.body.notes, req.user.id];
   pool.query(queryText, queryParams)
   .then((result) => {
-    console.log('Bookmark POST successful!', result.rows);
+    console.log('Bookmark POST successful!');
     res.sendStatus(201);
   })
   .catch((err => {
