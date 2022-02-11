@@ -35,14 +35,13 @@ function AddBookmarkForm() {
     return (
       <div>
         <h2>{heading}</h2>
-            <div id="bookmark-form-labels">
-                <label htmlFor="bookmark-title">Title</label>
-                <label htmlFor="bookmark-url">Link</label>
-                <label htmlFor="bookmark-priority">Priority</label>
-                <label htmlFor="bookmark-notes">Notes</label>
-            </div> 
             <div>
                 <form action="submit" className="add-bookmark-form" onSubmit={(evt) => addBookmark(evt)}>
+                    <label 
+                        className="form-label"
+                        htmlFor="bookmark-title">
+                            Title
+                    </label>
                     <input 
                         type="text" 
                         id="bookmark-title"
@@ -51,6 +50,9 @@ function AddBookmarkForm() {
                         value={bookmarkTitle} 
                         onChange={evt => setBookmarkTitle(evt.target.value)} 
                     />
+                    <label 
+                    className="form-label"
+                    htmlFor="bookmark-url">Link</label>
                     <input 
                         type="text" 
                         id="bookmark-url"
@@ -60,6 +62,11 @@ function AddBookmarkForm() {
                         onChange={evt => setBookmarkLink(evt.target.value)} 
                         required
                     />
+                    <label 
+                    className="form-label"
+                    htmlFor="bookmark-priority">
+                        Priority
+                    </label>
                     <select 
                         name="priority" id="item-priority"
                         className="form-control"
@@ -71,6 +78,11 @@ function AddBookmarkForm() {
                         <option value="C">C</option>
                         <option value="D">D</option>
                     </select>
+                    <label 
+                    className="form-label"
+                    htmlFor="bookmark-notes">
+                        Notes
+                    </label>
                     <input 
                         type="textarea" 
                         id="bookmark-notes"

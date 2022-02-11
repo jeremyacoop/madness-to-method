@@ -26,11 +26,13 @@ function CreateTagForm() {
     return (
       <div>
         <h2>{heading}</h2>
-            <div id="tag-form-labels">
-                <label htmlFor="tag-category">Category</label>
-            </div> 
             <div>
                 <form action="submit" className="create-tag-form" onSubmit={(evt) => createTag(evt)}>
+                    <label 
+                        className="form-label"
+                        htmlFor="tag-category">
+                            Category
+                    </label>
                     <input 
                         type="text" 
                         id="tag-category"

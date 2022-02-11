@@ -53,5 +53,22 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
   });
 });
 
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+  console.log('req.params:', req.params);
+  const queryText = `ALTER TABLE "links"
+                        SET "importantMark = $1"
+                        WHERE "id = $2" AND "user_id = $3";
+                        ` // tentative pseudocode
+  // const queryParams = [req.params.payload, req.params.id, req.user.id]; // tentative pseudocode
+  // pool.query(queryText, queryParams)
+  // .then(() => {
+  //   res.sendStatus(200);
+  // })
+  // .catch((err) => {
+  //   console.log('Error in PUT bookmark', err);
+  //   res.sendStatus(500);
+  // })
+})
+
 module.exports = router;
 
