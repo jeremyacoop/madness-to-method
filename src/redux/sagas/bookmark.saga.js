@@ -35,8 +35,7 @@ function* addBookmark(action) {
 function* markImportant(action) {
     try {
         console.log('In markImportant saga', action);
-        yield axios.put(`/bookmarks/${action.id}`, (action.checked))
-        // other code goes here?
+        yield axios.put(`/bookmarks/${action.id}`, action)
         yield put({
             type:   'FETCH_BOOKMARKS',
         });

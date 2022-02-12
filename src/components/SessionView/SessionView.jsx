@@ -30,24 +30,34 @@ function SessionView() {
         //     checked: checked
         // }
         console.log(bookmarks[id].importantMark);
-        if(bookmarks[id].importantMark === true) { // pseudocode
+        if(bookmarks[id].importantMark === true) { 
             checkStatus='';
             setChecked(false),
-            dispatch({
-                type:  'MARK_IMPORTANT',
-                id:     id,
-                checked:    checked     
-            })
+            dispatchChecked(id);
+            // dispatch({
+            //     type:  'MARK_IMPORTANT',
+            //     id:     id,
+            //     checked:    checked     
+            // })
         } else {
             checkStatus = 'checked';
             setChecked(true),
-            dispatch({
+            dispatchChecked(id);
+            // dispatch({
+            //     type:  'MARK_IMPORTANT',
+            //     id:     id,
+            //     checked:    checked     
+            // })
+        }
+        return checkStatus;
+    }
+
+    const dispatchChecked = (id) => {
+        dispatch({
                 type:  'MARK_IMPORTANT',
                 id:     id,
                 checked:    checked     
-            })
-        }
-        return checkStatus;
+        });
     }
 
     const deleteBookmark = (id) => {
