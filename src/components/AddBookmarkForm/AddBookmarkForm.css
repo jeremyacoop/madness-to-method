@@ -1,20 +1,25 @@
-#bookmark-form-labels {
+.form-label {
     display: flex;
     align-items: center;
 }
 
-#bookmark-title {
+.form-control {
+    display: flex;
+    align-items: center;
+}
+
+/* #bookmark-title {
+    margin: 10px;
+} */
+
+/* #bookmark-url {
+    margin: 10px;
+} */
+
+#bookmark-priority {
     margin: 10px;
 }
 
-#bookmark-url {
-    margin: 10px;
-}
-
-#task-priority {
-    margin: 10px;
-}
-
-#task-priority {
+#bookmark-notes {
     margin: 10px;
 }

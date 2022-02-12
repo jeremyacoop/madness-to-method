@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
   const queryText = `SELECT * FROM "sessions";`;
   pool.query(queryText)
   .then((result) => {
-    console.log(result);
+    // console.log(result);
     res.send(result.rows);
   })
   .catch((err) => {

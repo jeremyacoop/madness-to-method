@@ -26,11 +26,13 @@ function AddSessionForm() {
     return (
       <div>
         <h2>{heading}</h2>
-            <div id="session-form-labels">
-                <label htmlFor="session-title">Title</label>
-            </div> 
             <div>
                 <form action="submit" className="add-session-form" onSubmit={(evt) => addSession(evt)}>
+                    <label 
+                        className="form-label" 
+                        htmlFor="session-title">
+                            Title
+                    </label>
                     <input 
                         type="text" 
                         id="session-title"

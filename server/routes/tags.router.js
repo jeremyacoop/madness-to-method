@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
   const queryText = `SELECT * FROM "tags";`;
   pool.query(queryText)
   .then((result) => {
-    console.log(result);
+    // console.log(result);
     res.send(result.rows);
   })
   .catch((err) => {
@@ -18,9 +18,6 @@ router.get('/', (req, res) => {
   })
 });
 
-/**
- * POST route template
- */
 router.post('/', rejectUnauthenticated, (req, res) => {
   // POST route code here
   console.log('In tags router POST');
