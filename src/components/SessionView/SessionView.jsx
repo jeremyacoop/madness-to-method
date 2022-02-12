@@ -13,52 +13,48 @@ function SessionView() {
             type: 'FETCH_BOOKMARKS',
         });
     }
-
+    
     useEffect(() => {
         fetchBookmarks();
     }, []);
 
-    const handleChecked = (id) => {
+    // const handleChecked = (id) => {
         // evt.preventDefault();
-        console.log('Changing checkbox', checked);
+        // console.log('Changing checkbox', checked);
         
         // setChecked(!checked)
-        let checkStatus = '';
-        // let dispatchChecked = {
-        //     type:   'MARK_IMPORTANT',
-        //     id:     id,
-        //     checked: checked
+        // let checkStatus = '';
+        // console.log(bookmarks[id].id);
+        // if(bookmarks[id].importantMark === checked) { 
+        //     checkStatus=`
+        //         <input 
+        //             type="checkbox" 
+        //             onClick={evt => 
+        //             handleChecked(bookmark.id)} 
+        //             defaultChecked={checked} />
+        //         `;
+            // setChecked(false)
+        // } else {
+        //     checkStatus = `
+        //         <input 
+        //             type="checkbox" 
+        //             onClick={evt => 
+        //             handleChecked(bookmark.id)} 
+        //             defaultChecked={checked} />
+        //         `;
+            // setChecked(true)
         // }
-        console.log(bookmarks[id].importantMark);
-        if(bookmarks[id].importantMark === true) { 
-            checkStatus='';
-            setChecked(false),
-            dispatchChecked(id);
-            // dispatch({
-            //     type:  'MARK_IMPORTANT',
-            //     id:     id,
-            //     checked:    checked     
-            // })
-        } else {
-            checkStatus = 'checked';
-            setChecked(true),
-            dispatchChecked(id);
-            // dispatch({
-            //     type:  'MARK_IMPORTANT',
-            //     id:     id,
-            //     checked:    checked     
-            // })
-        }
-        return checkStatus;
-    }
+        // dispatchChecked(id);
+        // return checkStatus;
+    // }
 
-    const dispatchChecked = (id) => {
-        dispatch({
-                type:  'MARK_IMPORTANT',
-                id:     id,
-                checked:    checked     
-        });
-    }
+    // const dispatchChecked = (id) => {
+    //     dispatch({
+    //             type:  'MARK_IMPORTANT',
+    //             id:     id,
+    //             checked:    checked     
+    //     });
+    // }
 
     const deleteBookmark = (id) => {
         console.log('In deleteBookmark', id);
@@ -92,13 +88,13 @@ function SessionView() {
                                 </a>
                             </td>
                             <td>{bookmark.link}</td>
-                            <td>
-                                <input 
+                            {/* <td>
+                                { <input 
                                     type="checkbox" 
                                     onClick={evt => 
                                     handleChecked(bookmark.id)} 
-                                    defaultChecked={checked} />
-                            </td>
+                                    defaultChecked={checked} /> }
+                            </td> */}
                             <td>{bookmark.priority}</td>
                             <td>{bookmark.notes}</td>
                             <td>

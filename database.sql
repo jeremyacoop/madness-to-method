@@ -7,6 +7,8 @@ CREATE TABLE "user" (
 	"email" VARCHAR(100)
 );
 
+-- The session_id column may be replaced or augmented later,
+-- depending on how I decide the system should work
 CREATE TABLE "links" (
 	"id" serial PRIMARY KEY,
 	"title" VARCHAR(600),
