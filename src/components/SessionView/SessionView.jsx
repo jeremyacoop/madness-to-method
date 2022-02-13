@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './SessionView.css';
+import BookmarkDetail from '../BookmarkDetail/BookmarkDetail';
 
 function SessionView() {
     const dispatch = useDispatch();
@@ -64,6 +65,10 @@ function SessionView() {
         });
     }
 
+    const detailView = (id) => {
+        console.log('In detailView', id);
+    } 
+
     return (
         <>
             <h3>Bookmark Session</h3>
@@ -80,7 +85,10 @@ function SessionView() {
                 <tbody className="bookmarks-list"> 
                     {bookmarks.map((bookmark) => (
                         <tr key={bookmark.id}>
-                            <td>
+                            <td><button id="detail-edit" 
+                            onClick={(evt) => detailView(bookmark.id)}>
+                                Details
+                            </button>
                             </td>
                             <td>
                                 <a target="_blank" href={bookmark.link}>
