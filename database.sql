@@ -1,5 +1,5 @@
 CREATE TABLE "user" (
-	"id" serial PRIMARY KEY,
+	"id" SERIAL PRIMARY KEY,
 	"username" VARCHAR(80) UNIQUE NOT NULL,
 	"password" VARCHAR(1000) NOT NULL,
 	"firstName" VARCHAR(100),
@@ -10,10 +10,10 @@ CREATE TABLE "user" (
 -- The session_id column may be replaced or augmented later,
 -- depending on how I decide the system should work
 CREATE TABLE "links" (
-	"id" serial PRIMARY KEY,
+	"id" SERIAL PRIMARY KEY,
 	"title" VARCHAR(600),
 	"link" VARCHAR(1000),
-	"importantMark" bool DEFAULT 'false',
+	"importantMark" BOOL DEFAULT 'false',
 	"priority" CHAR,
 	"image" VARCHAR(300),
 	"notes" VARCHAR(3000),
@@ -22,22 +22,29 @@ CREATE TABLE "links" (
 );
 
 CREATE TABLE "tags" (
-	"id" serial PRIMARY KEY,
+	"id" SERIAL PRIMARY KEY,
 	"tagCategory" VARCHAR(200) NOT NULL,
 	"user_id" INT,
 	"icon" VARCHAR(300)
 );
 
 CREATE TABLE "sessions" (
-	"id" serial PRIMARY KEY,
-	"title" VARCHAR(300) NOT NULL,
-	"user_id" INT
+	"id" SERIAL PRIMARY KEY,
+	"title" VARCHAR(100) NOT NULL,
+	"user_id" INT,
+	"icon" VARCHAR(300)
 );
 
 CREATE TABLE "link_tags" (
-	"id" serial PRIMARY KEY,
-	"link_id" serial NOT NULL,
-	"tag_id" serial NOT NULL
+	"id" SERIAL PRIMARY KEY,
+	"link_id" SERIAL NOT NULL,
+	"tag_id" SERIAL NOT NULL
+);
+
+CREATE TABLE "link_sessions" (
+	"id" SERIAL PRIMARY KEY,
+	"link_id" INT NOT NULL,
+	"session_id" INT NOT NULL
 );
 
 ALTER TABLE "links" ADD CONSTRAINT "links_fk0" FOREIGN KEY ("session_id") REFERENCES "sessions"("id");
@@ -49,3 +56,6 @@ ALTER TABLE "sessions" ADD CONSTRAINT "sessions_fk0" FOREIGN KEY ("user_id") REF
 
 ALTER TABLE "link_tags" ADD CONSTRAINT "link_tags_fk0" FOREIGN KEY ("link_id") REFERENCES "links"("id");
 ALTER TABLE "link_tags" ADD CONSTRAINT "link_tags_fk1" FOREIGN KEY ("tag_id") REFERENCES "tags"("id");
+
+ALTER TABLE "link_sessions" ADD CONSTRAINT "link_sessions_fk0" FOREIGN KEY ("link_id") REFERENCES "links"("id");
+ALTER TABLE "link_sessions" ADD CONSTRAINT "link_sessions_fk1" FOREIGN KEY ("session_id") REFERENCES "sessions"("id");
