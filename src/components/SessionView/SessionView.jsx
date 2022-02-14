@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import './SessionView.css';
+import { connect, useSelector, useDispatch } from 'react-redux';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import BookmarkDetail from '../BookmarkDetail/BookmarkDetail';
+import './SessionView.css';
 
 function SessionView() {
     const dispatch = useDispatch();
+    const history = useHistory();
+    // const { id } = useParams();
     const bookmarks = useSelector(store => store.bookmarks);
     const [checked, setChecked] = useState(false);
 
@@ -65,9 +68,12 @@ function SessionView() {
         });
     }
 
-    const detailView = (id) => {
-        console.log('In detailView', id);
-    } 
+    // const detailView = (id) => {
+    //     // evt.preventDefault();
+    //     console.log('In detailView', id);
+    //     history.push(`/bookmarks/details/${id}`);
+    //     // history.push('/bookmarks/details/:id');
+    // } 
 
     return (
         <>
@@ -85,10 +91,18 @@ function SessionView() {
                 <tbody className="bookmarks-list"> 
                     {bookmarks.map((bookmark) => (
                         <tr key={bookmark.id}>
-                            <td><button id="detail-edit" 
-                            onClick={(evt) => detailView(bookmark.id)}>
+                            <td>
+                            {/* <Link 
+                                to='/bookmarks/details/:id' 
+                                onClick={(evt) => detailView(bookmark.id)}
+                            >
+
+                                <button id="detail-edit" 
+                                >
                                 Details
-                            </button>
+                                </button>
+                            </Link> */}
+                            <BookmarkDetail bookmark={bookmark} />
                             </td>
                             <td>
                                 <a target="_blank" href={bookmark.link}>
