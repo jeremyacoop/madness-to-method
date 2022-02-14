@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useHistory, useParams, Link } from 'react-router-dom';
 
-function BookmarkDetail(bookmark) {
-//   const bookmark = useSelector(store => store.bookmarks[id.id]);
+function BookmarkDetail() {
+  const id = useParams().id;
+  const mark = useSelector(store => store.bookmarks);
   const dispatch = useDispatch();
-  const mark = bookmark.bookmark;
+//   const mark = bookmark.bookmark;
   const [heading, setHeading] = useState('');
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
@@ -15,7 +16,7 @@ function BookmarkDetail(bookmark) {
   const [tag, setTag] = useState('');
 
 //   useEffect(() => {
-//       console.log('In BookmarkDetail', bookmark.bookmark.id);
+      console.log('In BookmarkDetail', mark);
 //       console.log(bookmark.bookmark);
 //       
 //   }, []);
@@ -41,7 +42,7 @@ const handleSave = (id, tableColumn) => {
         type="text" 
         id="edit-title" 
         placeholder="Title" 
-        value={mark.title} 
+        value={title} 
         onChange={(evt) => setTitle(evt.target.value)} />
       <button className="update-bookmark-value" onSubmit={handleSave(mark.id, 'title')} >Save</button>
       </form>
@@ -49,21 +50,21 @@ const handleSave = (id, tableColumn) => {
         type="text" 
         id="edit-link" 
         placeholder="Link" 
-        value={mark.link} 
+        value={link} 
         onChange={(evt) => setLink(evt.target.value)} />
       <button className="update-bookmark-value" onSubmit={handleSave(mark.id, 'link')} >Save</button>
       <input 
         type="text" 
         id="edit-priority" 
         placeholder="Priority" 
-        value={mark.priority} 
+        value={priority} 
         onChange={(evt) => setPriority(evt.target.value)} />
       <button className="update-bookmark-value" onSubmit={handleSave(mark.id, 'priority')} >Save</button>
       <input 
         type="text" 
         id="edit-image" 
         placeholder="Image" 
-        value={mark.image} 
+        value={image} 
         onChange={(evt) => setImage(evt.target.value)} />
       <button className="update-bookmark-value" 
       onSubmit={handleSave(mark.id, 'image')} 
@@ -72,7 +73,7 @@ const handleSave = (id, tableColumn) => {
         name="Notes" 
         id="edit-notes" 
         placeholder="Notes" 
-        value={mark.notes} 
+        value={notes} 
         onChange={(evt) => setNotes(evt.target.value)} cols="30" rows="10">
         </textarea>
       <button className="update-bookmark-value" onSubmit={handleSave(mark.id, 'notes')} >Save</button>

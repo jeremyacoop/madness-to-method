@@ -71,7 +71,7 @@ function SessionView() {
     const detailView = (id) => {
         // evt.preventDefault();
         console.log('In detailView', id);
-        history.push(`/bookmarks/details/${id}`);
+        history.push(`/details/${id}`);
     } 
 
     return (
@@ -87,24 +87,15 @@ function SessionView() {
                         <th>Notes</th>
                     </tr>
                 </thead>
-                <Router>
                 <tbody className="bookmarks-list"> 
                     {bookmarks.map((bookmark) => (
                         <tr key={bookmark.id}>
                             <td>
-                            <Link 
-                                to='/bookmarks/details/:id' 
-                                onClick={(evt) => detailView(bookmark.id)}
-                            >
-
                                 <button id="detail-edit" 
+                                onClick={(evt) => detailView(bookmark.id)}
                                 >
                                 Details
                                 </button>
-                            </Link>
-                            <Route exact path='/bookmarks/details/:id'>
-                                <BookmarkDetail bookmark={bookmark} />
-                            </Route>
                             </td>
                             <td>
                                 <a target="_blank" href={bookmark.link}>
@@ -130,7 +121,6 @@ function SessionView() {
                         </tr>
                     ))}
                 </tbody>
-                </Router>
             </table>
         </>
     )

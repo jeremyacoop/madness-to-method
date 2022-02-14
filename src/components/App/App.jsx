@@ -19,6 +19,13 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import SessionView from '../SessionView/SessionView';
+import SessionsList from '../SessionsList/SessionsList';
+import TagList from '../TagList/TagList';
+import AddBookmarkForm from '../AddBookmarkForm/AddBookmarkForm';
+import AddSessionForm from '../AddSessionForm/AddSessionForm';
+import CreateTagForm from '../CreateTagForm/CreateTagForm';
+import BookmarkDetail from '../BookmarkDetail/BookmarkDetail';
 
 import './App.css';
 
@@ -109,7 +116,27 @@ function App() {
               <LandingPage />
             }
           </Route>
-
+          <ProtectedRoute path='/addbookmark'>
+            <AddBookmarkForm />
+          </ProtectedRoute>
+          <ProtectedRoute path='/addsession'>
+            <AddSessionForm />
+          </ProtectedRoute>
+          <ProtectedRoute path='/createtag'>
+            <CreateTagForm />
+          </ProtectedRoute>
+          <ProtectedRoute path='/sessions'>
+            <SessionsList />
+          </ProtectedRoute>
+          <ProtectedRoute path='/taglist'>
+            <TagList />
+          </ProtectedRoute>
+          <ProtectedRoute exact path='/bookmarks'>
+            <SessionView />
+          </ProtectedRoute>
+          <ProtectedRoute exact path='/details/:id'>
+            <BookmarkDetail />
+          </ProtectedRoute>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>
