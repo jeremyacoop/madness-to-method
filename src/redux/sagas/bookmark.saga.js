@@ -32,10 +32,10 @@ function* addBookmark(action) {
     }
 }
 
-function* markImportant(action) {
+function* updateBookmark(action) {
     try {
-        console.log('In markImportant saga', action);
-        yield axios.put(`/bookmarks/${action.id}`, action)
+        console.log('In updateBookmark saga', action.payload);
+        yield axios.put(`/bookmarks/${action.id}`, action.payload)
         yield put({
             type:   'FETCH_BOOKMARKS',
         });
@@ -44,6 +44,19 @@ function* markImportant(action) {
         console.error('UPDATE bookmark failed!', err);
     }
 }
+
+// function* markImportant(action) {
+//     try {
+//         console.log('In markImportant saga', action);
+//         yield axios.put(`/bookmarks/${action.id}`, action)
+//         yield put({
+//             type:   'FETCH_BOOKMARKS',
+//         });
+//     }
+//     catch (err) {
+//         console.error('UPDATE bookmark failed!', err);
+//     }
+// }
 
 function* deleteBookmark(action) {
     try {
@@ -63,7 +76,8 @@ function* bookmarkSaga() {
     yield takeEvery('FETCH_BOOKMARKS', fetchBookmarks);
     yield takeEvery('ADD_BOOKMARK', addBookmark);
     yield takeEvery('DELETE_BOOKMARK', deleteBookmark);
-    yield takeEvery('MARK_IMPORTANT', markImportant);
+    yield takeEvery('UPDATE_BOOKMARK', updateBookmark);
+    // yield takeEvery('MARK_IMPORTANT', markImportant);
 }
 
 export default bookmarkSaga;
