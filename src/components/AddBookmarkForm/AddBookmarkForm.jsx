@@ -8,6 +8,7 @@ function AddBookmarkForm() {
     const [bookmarkTitle, setBookmarkTitle] = useState('');
     const [bookmarkLink, setBookmarkLink] = useState('');
     const [bookmarkPriority, setBookmarkPriority] = useState('');
+    const [bookmarkImage, setBookmarkImage] = useState('');
     const [bookmarkNotes, setBookmarkNotes] = useState('');
 
     const addBookmark = (evt) => {
@@ -19,6 +20,7 @@ function AddBookmarkForm() {
                 title:    bookmarkTitle,
                 link:     bookmarkLink,
                 priority: bookmarkPriority,
+                image:    bookmarkImage,
                 notes:    bookmarkNotes
             }
         })
@@ -29,6 +31,7 @@ function AddBookmarkForm() {
         setBookmarkTitle('');
         setBookmarkLink('');
         setBookmarkPriority('');
+        setBookmarkImage('');
         setBookmarkNotes('');
     }
 
@@ -78,6 +81,19 @@ function AddBookmarkForm() {
                         <option value="C">C</option>
                         <option value="D">D</option>
                     </select>
+                    <label 
+                    className="form-label"
+                    htmlFor="bookmark-image">
+                        Image
+                    </label>
+                    <input 
+                        type="textarea" 
+                        id="bookmark-notes"
+                        className="form-control"
+                        placeholder="Image"
+                        value={bookmarkImage} 
+                        onChange={evt => setBookmarkImage(evt.target.value)} 
+                    />
                     <label 
                     className="form-label"
                     htmlFor="bookmark-notes">

@@ -54,26 +54,35 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/:id', rejectUnauthenticated, (req, res) => {
-  console.log('req.params:', req.body.id);
+  console.log('req.body.id:', req.body.id);
+  console.log('req.body.value:', req.body.column);
   console.log('req.body:', req.body.value);
   const queryText = `UPDATE "links"
-                        SET "${req.body.column}" = 'value'
-                        WHERE "id" = ${req.body.id}
-                        AND "user_id" = ${req.user.id}`;
-  const queryParams = [req.body.column, req.body.value, req.body.id, req.user.id];
+                        SET $1 = $2
+                        WHERE "id" = $3
+                        AND "user_id" = $4;`;
+  const queryParams = [req.body.value, req.body.id, req.user.id];
+  //    TEST PSEUDOCODE:
+  // for(i=0; queryParams.length; i++) {
+  //    let valueToCheck = <<<newQueryText>>>
+  //    if(queryParams[0] != valueToCheck) {
+  //        <<<pool.query>>>
+  //    }
+  // }
+  
   // const queryText = `UPDATE "links"
   //                       SET "importantMark" = $1
   //                       WHERE "id" = $2 AND "user_id" = $3;
   //                       `; // work in progress
   // const queryParams = [req.body.checked, req.params.id, req.user.id]; 
-  // pool.query(queryText, queryParams)
-  // .then(() => {
-  //   res.sendStatus(200);
-  // })
-  // .catch((err) => {
-  //   console.log('Error in PUT bookmark', err);
-  //   res.sendStatus(500);
-  // })
+  pool.query(queryText, queryParams)
+  .then(() => {
+    res.sendStatus(200);
+  })
+  .catch((err) => {
+    console.log('Error in PUT bookmark', err);
+    res.sendStatus(500);
+  })
 })
 
 module.exports = router;

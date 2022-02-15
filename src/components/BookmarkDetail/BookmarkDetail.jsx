@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useHistory, useParams, Link } from 'react-router-dom';
 
@@ -14,25 +14,42 @@ function BookmarkDetail() {
   const [image, setImage] = useState('');
   const [notes, setNotes] = useState('');
   const [tag, setTag] = useState('');
+  const editTitle = useRef();
+  const editPriority = useRef(null);
+  const editLink = useRef(null);
+  const editImage = useRef(null);
+  const editNotes = useRef(null);
 
 //   useEffect(() => {
-      console.log('In BookmarkDetail', mark);
+      console.log('In BookmarkDetail', id);
 //       console.log(bookmark.bookmark);
 //       
 //   }, []);
   
 const handleSave = (id, tableColumn) => { 
     console.log('In handleSave', id, tableColumn);
-    let newValue = tableColumn;
+    console.log(editTitle.current);
+    console.log(editPriority.current);
+    console.log(editLink.current);
+    console.log(editImage.current);
+    console.log(editNotes.current);
+    // console.log(id, tableColumn, newValue);
+
+    // how do I tell the function which of the save 
+    // buttons are being clicked? And/or which of the 
+    // fields has changed from its pre-edit state?
     
-    dispatch({
-        type:   'UPDATE_BOOKMARK',
-        payload: {
-            id: id,
-            column: tableColumn,
-            value: newValue
-        }
-    })
+    // if(button with __ value is clicked)
+    //     newValue = __
+
+    // dispatch({
+    //     type:   'UPDATE_BOOKMARK',
+    //     payload: {
+    //         id: id,
+    //         column: tableColumn,
+    //         value: newValue
+    //     }
+    // })
 }
 
   return (
@@ -47,7 +64,9 @@ const handleSave = (id, tableColumn) => {
         value={title} 
         onChange={(evt) => setTitle(evt.target.value)}
          />
-      <button className="update-bookmark-value" onSubmit={handleSave(mark.id, 'title')} >Save</button>
+      <button className="update-bookmark-value"
+        ref={editTitle}
+        onSubmit={handleSave(id, 'title')} >Save</button>
       </form>
       <form action="">
     <select 
@@ -61,14 +80,18 @@ const handleSave = (id, tableColumn) => {
         <option value="C">C</option>
         <option value="D">D</option>
     </select>
-      <button className="update-bookmark-value" onSubmit={handleSave(mark.id, 'priority')} >Save</button>
+      <button className="update-bookmark-value"
+        ref={editPriority}
+        onSubmit={handleSave(id, 'priority')} >Save</button>
       <input 
         type="text" 
         id="edit-link" 
         placeholder="Link" 
         value={link} 
         onChange={(evt) => setLink(evt.target.value)} />
-      <button className="update-bookmark-value" onSubmit={handleSave(mark.id, 'link')} >Save</button>
+      <button className="update-bookmark-value"
+        ref={editLink}
+        onSubmit={handleSave(id, 'link')} >Save</button>
       </form>
       <form action="">
       <input 
@@ -78,8 +101,9 @@ const handleSave = (id, tableColumn) => {
         value={image} 
         onChange={(evt) => setImage(evt.target.value)} />
       <button className="update-bookmark-value" 
-      onSubmit={handleSave(mark.id, 'image')} 
-      >Save</button>
+        ref={editImage}
+        onSubmit={handleSave(id, 'image')} 
+        >Save</button>
       </form>
       <form action="">
       <textarea 
@@ -87,9 +111,11 @@ const handleSave = (id, tableColumn) => {
         id="edit-notes" 
         placeholder="Notes" 
         value={notes} 
-        onChange={(evt) => setNotes(evt.target.value)} cols="30" rows="10">
+        onChange={(evt) => setNotes(evt.target.value)} cols="60" rows="10">
         </textarea>
-      <button className="update-bookmark-value" onSubmit={handleSave(mark.id, 'notes')} >Save</button>
+      <button className="update-bookmark-value"
+        ref={editNotes}
+        onSubmit={handleSave(id, 'notes')} >Save</button>
       </form>
     </div>
   );
