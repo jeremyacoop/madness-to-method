@@ -77,6 +77,9 @@ function SessionView() {
     return (
         <>
             <h3>Bookmark Session</h3>
+            <Link className='navLink' to='/addbookmark'>
+              Add Bookmark
+            </Link>
             <table>
                 <thead>
                     <tr>

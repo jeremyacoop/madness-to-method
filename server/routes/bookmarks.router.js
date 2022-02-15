@@ -55,7 +55,12 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 
 router.put('/:id', rejectUnauthenticated, (req, res) => {
   console.log('req.params:', req.body.id);
-  console.log('req.body:', req.body.column);
+  console.log('req.body:', req.body.value);
+  const queryText = `UPDATE "links"
+                        SET "${req.body.column}" = 'value'
+                        WHERE "id" = ${req.body.id}
+                        AND "user_id" = ${req.user.id}`;
+  const queryParams = [req.body.column, req.body.value, req.body.id, req.user.id];
   // const queryText = `UPDATE "links"
   //                       SET "importantMark" = $1
   //                       WHERE "id" = $2 AND "user_id" = $3;

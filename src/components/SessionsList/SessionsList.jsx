@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function SessionsList() {
     const dispatch = useDispatch();
@@ -29,6 +30,9 @@ function SessionsList() {
     return (
         <section>
             <div>
+            <Link className='navLink' to='/addsession'>
+              Add Session
+            </Link>
             </div>
             <table>
                 <thead>
