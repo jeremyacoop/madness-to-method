@@ -6,8 +6,11 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 router.get('/', rejectUnauthenticated, (req, res) => {
   // GET route code here
   console.log('In bookmarks router GET');
-  const queryText = `SELECT * FROM "links";`;
-  pool.query(queryText)
+  const queryText = `SELECT * FROM "links"  
+                        WHERE "user_id" = $1
+                        ORDER BY "id" ASC;`;
+  const queryParams = [req.user.id];
+  pool.query(queryText, queryParams)
   .then((result) => {
     // console.log(result);
     res.send(result.rows);
@@ -17,6 +20,11 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     res.sendStatus(500);
   })
 });
+
+// GET id for bookmark table view
+router.get('/:id', rejectUnauthenticated, (req, res) => {
+  console.log('In bookmarks router GET ')
+})
 
 /**
  * POST route template
@@ -42,9 +50,11 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
   const queryText = `DELETE FROM "links"
-                      WHERE "id" = $1`;
-  pool.query(queryText, [req.params.id])
-  .then(() => {
+                      WHERE "id" = $1
+                      AND "user_id" = $2`;
+  pool.query(queryText, [req.params.id, req.user.id])
+  .then((dbRes) => {
+    console.log('DELETE success', dbRes);
     res.sendStatus(200);
   })
   .catch((err) => {

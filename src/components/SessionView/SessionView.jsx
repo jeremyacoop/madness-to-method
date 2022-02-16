@@ -10,7 +10,7 @@ function SessionView() {
     const history = useHistory();
     // const { id } = useParams();
     const bookmarks = useSelector(store => store.bookmarks);
-    const [checked, setChecked] = useState(false);
+    // const [checked, setChecked] = useState(false);
 
     const fetchBookmarks = () => {
         dispatch({
@@ -68,24 +68,27 @@ function SessionView() {
         });
     }
 
-    const detailView = (id) => {
+    const detailView = (id ) => {
         // evt.preventDefault();
         console.log('In detailView', id);
-        history.push(`/details/${id}`);
+        history.push(`/details/${id}`) 
     } 
 
     return (
         <>
             <h3>Bookmark Session</h3>
-            <Link className='navLink' to='/addbookmark'>
+            <Link 
+                className='navLink' 
+                to='/addbookmark'
+                >
               Add Bookmark
             </Link>
             <table>
                 <thead>
                     <tr>
+                        <th>Detail View</th>
                         <th>Title</th>
                         <th>Link</th>
-                        <th>Important</th>
                         <th>Priority</th>
                         <th>Notes</th>
                     </tr>
@@ -95,7 +98,7 @@ function SessionView() {
                         <tr key={bookmark.id}>
                             <td>
                                 <button id="detail-edit" 
-                                onClick={(evt) => detailView(bookmark.id)}
+                                onClick={(evt) => detailView(bookmark.id, bookmark)}
                                 >
                                 Details
                                 </button>
