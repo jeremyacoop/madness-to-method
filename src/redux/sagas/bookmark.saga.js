@@ -57,7 +57,7 @@ function* updateBookmark(action) {
         console.log('In updateBookmark saga', action.payload);
         yield axios.put(`/bookmarks/${action.id}`, action.payload)
         yield put({
-            type:   'FETCH_BOOKMARKS',
+           type:   'FETCH_BOOKMARK_DETAIL',
         });
     }
     catch (err) {
@@ -97,7 +97,7 @@ function* bookmarkSaga() {
     yield takeEvery('ADD_BOOKMARK', addBookmark);
     yield takeEvery('DELETE_BOOKMARK', deleteBookmark);
     yield takeEvery('FETCH_BOOKMARK_DETAIL', fetchBookmarkDetail);
-    yield takeEvery('UPDATE_BOOKMARK', updateBookmark);
+    yield takeEvery('SEND_UPDATE_BOOKMARK', updateBookmark);
     // yield takeEvery('MARK_IMPORTANT', markImportant);
 }
 

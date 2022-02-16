@@ -99,14 +99,11 @@ function SessionView() {
                             <td>
                                 <Link 
                                     className='navLink' 
+                                    id="detail-edit"
                                     to={`/details/${bookmark.id}`}
                                     state={{mark: bookmark}}
                                     >
-                                        <button id="detail-edit" 
-                                        // onClick={(evt) => detailView(bookmark.id, bookmark)}
-                                        >
                                         Details
-                                        </button>
                                 </Link>
                             </td>
                             <td>

@@ -23,16 +23,16 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 router.get('/:id', rejectUnauthenticated, (req, res) => {
   // GET route code here
-  console.log('In bookmark router GET', req.body.id);
+  console.log('In bookmark router GET', req.params.id);
   const queryText = `SELECT * FROM "links"  
                         WHERE "id" = $1 
                         AND "user_id" = $2;
                         `;
-  const queryParams = [req.body.id, req.user.id];
+  const queryParams = [req.params.id, req.user.id];
   pool.query(queryText, queryParams)
   .then((result) => {
-    console.log(result);
-    res.send(result.rows);
+    // console.log(result.rows[0].id);
+    res.send(result.rows[0]);
   })
   .catch((err) => {
     console.log('Cannot retrieve bookmark from db.', err);
@@ -55,7 +55,8 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   const queryText = `INSERT INTO "links"
                         ("title", "link", "priority","notes", "user_id")
                       VALUES 
-                        ($1, $2, $3, $4, $5)`;
+                        ($1, $2, $3, $4, $5)
+                        `;
   const queryParams = [req.body.title, req.body.link, req.body.priority, req.body.notes, req.user.id];
   pool.query(queryText, queryParams)
   .then((result) => {
@@ -84,9 +85,9 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/:id', rejectUnauthenticated, (req, res) => {
-  console.log('req.body.id:', req.body.id);
-  console.log('req.body.value:', req.body.column);
-  console.log('req.body:', req.body.value);
+  console.log('PUT: req.body.id:', req.body);
+  // console.log('req.body.value:', req.body.column);
+  // console.log('req.body:', req.body.value);
   const queryText = `UPDATE "links"
                         SET $1 = $2
                         WHERE "id" = $3
