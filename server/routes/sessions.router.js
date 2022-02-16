@@ -54,6 +54,25 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
   });
 });
 
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+  console.log('req.body.id:', req.body.id);
+  const queryText = `UPDATE "links"
+                        SET "session_id" = 1$
+                        WHERE "id" = $2
+                        AND "user_id" = $3;`;
+  const queryParams = [req.body.value, req.body.id, req.user.id];
+  
+  pool.query(queryText, queryParams)
+  .then(() => {
+    res.sendStatus(200);
+  })
+  .catch((err) => {
+    console.log('Error in PUT session', err);
+    res.sendStatus(500);
+  })
+})
+
+
 module.exports = router;
 
 
