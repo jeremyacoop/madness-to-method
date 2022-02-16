@@ -68,11 +68,11 @@ function SessionView() {
         });
     }
 
-    const detailView = (id ) => {
-        // evt.preventDefault();
-        console.log('In detailView', id);
-        history.push(`/details/${id}`) 
-    } 
+    // const detailView = (id ) => {
+    //     // evt.preventDefault();
+    //     console.log('In detailView', id);
+    //     history.push(`/details/${id}`) 
+    // } 
 
     return (
         <>
@@ -97,11 +97,17 @@ function SessionView() {
                     {bookmarks.map((bookmark) => (
                         <tr key={bookmark.id}>
                             <td>
-                                <button id="detail-edit" 
-                                onClick={(evt) => detailView(bookmark.id, bookmark)}
-                                >
-                                Details
-                                </button>
+                                <Link 
+                                    className='navLink' 
+                                    to={`/details/${bookmark.id}`}
+                                    state={{mark: bookmark}}
+                                    >
+                                        <button id="detail-edit" 
+                                        // onClick={(evt) => detailView(bookmark.id, bookmark)}
+                                        >
+                                        Details
+                                        </button>
+                                </Link>
                             </td>
                             <td>
                                 <a target="_blank" href={bookmark.link}>

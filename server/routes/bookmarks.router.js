@@ -22,9 +22,9 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 // GET id for bookmark table view
-router.get('/:id', rejectUnauthenticated, (req, res) => {
-  console.log('In bookmarks router GET ')
-})
+// router.get('/:id', rejectUnauthenticated, (req, res) => {
+//   console.log('In bookmarks router GET ')
+// })
 
 /**
  * POST route template

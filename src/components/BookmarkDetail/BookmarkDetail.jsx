@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import { useHistory, useParams, Link } from 'react-router-dom';
+import { useHistory, useParams, useLocation, Link } from 'react-router-dom';
 
 function BookmarkDetail() {
   const id = useParams().id;
   const bookmarks = useSelector(store => store.bookmarks);
-  const mark = useParams();
+  const bookmark = useLocation();
+  // const { bookmark } = bookmark.state;
   const dispatch = useDispatch();
 //   const mark = bookmark.bookmark;
 //   const [bookmark, setBookmark] = useState({}); 
@@ -28,14 +29,14 @@ function BookmarkDetail() {
   //     // console.log(bookmark);
   // }
   
-  console.log('In BookmarkDetail', id);
+  // console.log('In BookmarkDetail', id);
   // useEffect(() => {
   //     defineBookmark(bookmarks);
   // }, []);
 
 const handleSave = (id, bookmark) => { 
     console.log('In handleSave', id);
-    const newValues = [title, link, image, priority, notes];
+    // const newValues = [title, link, image, priority, notes];
     const editPayload = {
         title:  '',
         link:  '',
@@ -85,14 +86,14 @@ const handleSave = (id, bookmark) => {
     }
 
     console.log(editPayload);
-    // dispatch({
-    //     type:   'UPDATE_BOOKMARK',
-    //     payload: {
-    //         id: id,
-    //         column: tableColumn,
-    //         value: newValue
-    //     }
-    // })
+    dispatch({
+        type:   'UPDATE_BOOKMARK',
+        payload: {
+            id: id,
+            column: tableColumn,
+            value: newValue
+        }
+    })
 }
 
   return (
@@ -100,7 +101,7 @@ const handleSave = (id, bookmark) => {
       <h2>{heading}</h2>
       {console.log(mark)}
       <form action=""
-       onSubmit={(evt) => handleSave(id, bookmark)}  >
+       onSubmit={(evt) => handleSave(id, mark)}  >
 
       <input 
         type="text" 
