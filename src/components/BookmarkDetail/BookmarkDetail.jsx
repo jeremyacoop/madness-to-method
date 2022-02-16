@@ -3,9 +3,9 @@ import {useSelector, useDispatch} from 'react-redux';
 import { useHistory, useParams, useLocation, Link } from 'react-router-dom';
 
 function BookmarkDetail() {
-  const id = useParams().id;
-  const bookmarks = useSelector(store => store.bookmarks);
-  const bookmark = useLocation();
+  const markId = useParams().id;
+  const bookmark = useSelector(store => store.bookmarks);
+  // const mark = useLocation();
   // const { bookmark } = bookmark.state;
   const dispatch = useDispatch();
 //   const mark = bookmark.bookmark;
@@ -18,25 +18,24 @@ function BookmarkDetail() {
   const [notes, setNotes] = useState('');
   // const [tag, setTag] = useState('');
 
-  // const defineBookmark = (bookmarks) => {
-  //   // for(let i=0; i<bookmarks.length; i++) {
-  //   //     console.log(bookmarks[i].id)
-  //   //     console.log(bookmarks[i])
-  //   //     if(bookmarks[i].id === id) {
-  //   //         setBookmark(bookmarks[i]);
-  //   //     }
-  //   // }
-  //     // console.log(bookmark);
-  // }
-  
-  // console.log('In BookmarkDetail', id);
-  // useEffect(() => {
-  //     defineBookmark(bookmarks);
-  // }, []);
+  const defineBookmark = () => {
+    console.log(markId);
+    // return marks.findIndex(obj => obj.id === markId);
+  //   // return bookmarks.map(obj => obj.id).indexOf(id );
+    dispatch({
+      type: 'FETCH_BOOKMARK_DETAIL',
+      payload: markId
+    })   
+  }
+  // const bookmarkIndex = defineBookmark(bookmarks);  
+  // console.log(bookmarkIndex);
 
-const handleSave = (id, bookmark) => { 
-    console.log('In handleSave', id);
-    // const newValues = [title, link, image, priority, notes];
+useEffect(() => {
+  defineBookmark();
+}, []);
+
+const handleSave = (markId, mark) => { 
+    console.log('In handleSave', markId);
     const editPayload = {
         title:  '',
         link:  '',
@@ -44,9 +43,7 @@ const handleSave = (id, bookmark) => {
         priority: '',
         notes:  ''
     };
-    console.log(bookmark.title);
-
-    // console.log(id, newValues);
+    console.log(mark.title);
 
     // how do I tell the function which of the save 
     // buttons are being clicked? And/or which of the 
@@ -89,7 +86,7 @@ const handleSave = (id, bookmark) => {
     dispatch({
         type:   'UPDATE_BOOKMARK',
         payload: {
-            id: id,
+            id: markId,
             column: tableColumn,
             value: newValue
         }
@@ -99,9 +96,9 @@ const handleSave = (id, bookmark) => {
   return (
     <div>
       <h2>{heading}</h2>
-      {console.log(mark)}
+      {/* {console.log(mark)} */}
       <form action=""
-       onSubmit={(evt) => handleSave(id, mark)}  >
+       onSubmit={(evt) => handleSave(markId, mark)}  >
 
       <input 
         type="text" 

@@ -21,6 +21,26 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   })
 });
 
+router.get('/:id', rejectUnauthenticated, (req, res) => {
+  // GET route code here
+  console.log('In bookmark router GET', req.body.id);
+  const queryText = `SELECT * FROM "links"  
+                        WHERE "id" = $1 
+                        AND "user_id" = $2;
+                        `;
+  const queryParams = [req.body.id, req.user.id];
+  pool.query(queryText, queryParams)
+  .then((result) => {
+    console.log(result);
+    res.send(result.rows);
+  })
+  .catch((err) => {
+    console.log('Cannot retrieve bookmark from db.', err);
+    res.sendStatus(500);
+  })
+});
+
+
 // GET id for bookmark table view
 // router.get('/:id', rejectUnauthenticated, (req, res) => {
 //   console.log('In bookmarks router GET ')
