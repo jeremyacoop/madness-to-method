@@ -85,22 +85,34 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/:id', rejectUnauthenticated, (req, res) => {
-  console.log('PUT: req.body.id:', req.body);
-  // console.log('req.body.value:', req.body.column);
-  // console.log('req.body:', req.body.value);
-  const queryText = `UPDATE "links"
-                        SET $1 = $2
-                        WHERE "id" = $3
-                        AND "user_id" = $4;`;
-  const queryParams = [req.body.value, req.body.id, req.user.id];
-  //    TEST PSEUDOCODE:
-  // for(i=0; queryParams.length; i++) {
-  //    let valueToCheck = <<<newQueryText>>>
-  //    if(queryParams[0] != valueToCheck) {
-  //        <<<pool.query>>>
-  //    }
-  // }
+  console.log('PUT: req.body.id:', req.body.title);
+  // console.log('req.body:', req.body);
+  console.log('req.params:', req.params.id);
+  const queryText = `
+    UPDATE "links"
+      SET "title" = $1,
+        "priority" = $2,
+        "link" = $3,
+        "image" = $4,
+        "notes" = $5
+    WHERE "id" = $6
+      AND "user_id" = $7;
+    `;
+  const queryParams = [
+    req.body.title, 
+    req.body.priority, 
+    req.body.link, 
+    req.body.image, 
+    req.body.notes, 
+    req.body.id, 
+    req.user.id
+  ];
   
+  // const queryText = `UPDATE "links"
+  //                       SET $1 = $2
+  //                       WHERE "id" = $3
+  //                       AND "user_id" = $4;`;
+
   // const queryText = `UPDATE "links"
   //                       SET "importantMark" = $1
   //                       WHERE "id" = $2 AND "user_id" = $3;
