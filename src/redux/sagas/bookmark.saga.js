@@ -57,7 +57,7 @@ function* updateBookmark(action) {
         console.log('In updateBookmark saga', action.payload);
         yield axios.put(`/bookmarks/${action.id}`, action.payload)
         yield put({
-           type:   'FETCH_BOOKMARK_DETAIL',
+           type:   'FETCH_BOOKMARKS',
         });
     }
     catch (err) {
@@ -83,7 +83,7 @@ function* deleteBookmark(action) {
         console.log('In deleteBookmark');
         yield axios.delete(`/bookmarks/${action.id}`);
         yield put({
-            type:   'FETCH_BOOKMARKS'
+            type:   'SET_BOOKMARK'
         });
     }
     catch (err) {

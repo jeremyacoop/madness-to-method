@@ -4,9 +4,9 @@ import { useHistory, useParams, useLocation, Link } from 'react-router-dom';
 
 function BookmarkDetail() {
   const history = useHistory();
+  const dispatch = useDispatch();
   const id = useParams().id;
   const bookmark = useSelector(store => store.bookmarks);
-  const dispatch = useDispatch();
   const [heading, setHeading] = useState('');
   // const [editField, setEditField] = useState(false);
   // const [tag, setTag] = useState('');
@@ -26,7 +26,6 @@ function BookmarkDetail() {
   const handleSave = (evt, id, mark) => { 
     evt.preventDefault();
     console.log('In handleSave', id);
-    console.log(mark.title);
 
     dispatch({
         type:   'SEND_UPDATE_BOOKMARK',
@@ -41,8 +40,7 @@ function BookmarkDetail() {
     <div>
       <h2>{heading}</h2>
       {console.log(bookmark)}
-      <form action=""
-       onSubmit={(evt) => handleSave(evt, id, bookmark)}  >
+      <form onSubmit={(evt) => handleSave(evt, id, bookmark)}  >
 
       <input 
         type="text" 

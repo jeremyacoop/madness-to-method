@@ -91,10 +91,10 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
   const queryText = `
     UPDATE "links"
       SET "title" = $1,
-        "priority" = $2,
-        "link" = $3,
-        "image" = $4,
-        "notes" = $5
+          "priority" = $2,
+          "link" = $3,
+          "image" = $4,
+          "notes" = $5
     WHERE "id" = $6
       AND "user_id" = $7;
     `;
@@ -108,16 +108,6 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
     req.user.id
   ];
   
-  // const queryText = `UPDATE "links"
-  //                       SET $1 = $2
-  //                       WHERE "id" = $3
-  //                       AND "user_id" = $4;`;
-
-  // const queryText = `UPDATE "links"
-  //                       SET "importantMark" = $1
-  //                       WHERE "id" = $2 AND "user_id" = $3;
-  //                       `; // work in progress
-  // const queryParams = [req.body.checked, req.params.id, req.user.id]; 
   pool.query(queryText, queryParams)
   .then(() => {
     res.sendStatus(200);
