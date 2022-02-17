@@ -80,10 +80,10 @@ function* updateBookmark(action) {
 
 function* deleteBookmark(action) {
     try {
-        console.log('In deleteBookmark');
+        console.log('In deleteBookmark', action);
         yield axios.delete(`/bookmarks/${action.id}`);
         yield put({
-            type:   'SET_BOOKMARKS'
+            type:   'FETCH_BOOKMARKS'
         });
     }
     catch (err) {
