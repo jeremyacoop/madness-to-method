@@ -3,119 +3,63 @@ import {useSelector, useDispatch} from 'react-redux';
 import { useHistory, useParams, useLocation, Link } from 'react-router-dom';
 
 function BookmarkDetail() {
-  const id = useParams().id;
-  const bookmarks = useSelector(store => store.bookmarks);
-  const bookmark = useLocation();
-  // const { bookmark } = bookmark.state;
+  const history = useHistory();
   const dispatch = useDispatch();
-//   const mark = bookmark.bookmark;
-//   const [bookmark, setBookmark] = useState({}); 
+  const id = useParams().id;
+  const bookmark = useSelector(store => store.bookmarks);
   const [heading, setHeading] = useState('');
-  const [title, setTitle] = useState('');
-  const [link, setLink] = useState('');
-  const [priority, setPriority] = useState('');
-  const [image, setImage] = useState('');
-  const [notes, setNotes] = useState('');
+  // const [editField, setEditField] = useState(false);
   // const [tag, setTag] = useState('');
 
-  // const defineBookmark = (bookmarks) => {
-  //   // for(let i=0; i<bookmarks.length; i++) {
-  //   //     console.log(bookmarks[i].id)
-  //   //     console.log(bookmarks[i])
-  //   //     if(bookmarks[i].id === id) {
-  //   //         setBookmark(bookmarks[i]);
-  //   //     }
-  //   // }
-  //     // console.log(bookmark);
-  // }
-  
-  // console.log('In BookmarkDetail', id);
-  // useEffect(() => {
-  //     defineBookmark(bookmarks);
-  // }, []);
-
-const handleSave = (id, bookmark) => { 
-    console.log('In handleSave', id);
-    // const newValues = [title, link, image, priority, notes];
-    const editPayload = {
-        title:  '',
-        link:  '',
-        image:  '',
-        priority: '',
-        notes:  ''
-    };
-    console.log(bookmark.title);
-
-    // console.log(id, newValues);
-
-    // how do I tell the function which of the save 
-    // buttons are being clicked? And/or which of the 
-    // fields has changed from its pre-edit state?
-    
-    // if(button with __ value is clicked)
-    //     newValue = __
-    if(title === mark.title) {
-        editPayload.title = mark.title;
-    }
-    else {
-        editPayload.title = title;
-    }
-    if(link === mark.link) {
-        editPayload.link = mark.link;
-    }
-    else {
-        editPayload.link = link;
-    }
-    if(image === mark.image) {
-        editPayload.image = mark.image;
-    }
-    else {
-        editPayload.image = image;
-    }
-    if(priority === mark.priority) {
-        editPayload.priority = mark.priority;
-    }
-    else {
-        editPayload.priority = priority;
-    }
-    if(notes === mark.notes) {
-        editPayload.notes = mark.notes;
-    }
-    else {
-        editPayload.notes = notes;
-    }
-
-    console.log(editPayload);
+  const defineBookmark = () => {
+    console.log(id);
     dispatch({
-        type:   'UPDATE_BOOKMARK',
-        payload: {
-            id: id,
-            column: tableColumn,
-            value: newValue
-        }
+      type: 'FETCH_BOOKMARK_DETAIL',
+      payload: id
+    })   
+  }
+
+  useEffect(() => {
+    defineBookmark();
+  }, []);
+
+  const handleSave = (evt, id, mark) => { 
+    evt.preventDefault();
+    console.log('In handleSave', id);
+
+    dispatch({
+        type:   'SEND_UPDATE_BOOKMARK',
+          id: id,
+          payload: mark
     })
-}
+    defineBookmark();
+    // history.push('/bookmarks');
+  }
 
   return (
     <div>
       <h2>{heading}</h2>
-      {console.log(mark)}
-      <form action=""
-       onSubmit={(evt) => handleSave(id, mark)}  >
+      {console.log(bookmark)}
+      <form onSubmit={(evt) => handleSave(evt, id, bookmark)}  >
 
       <input 
         type="text" 
         id="edit-title" 
         className="update-bookmark-value"
         placeholder="Title" 
-        value={title} 
-        onChange={(evt) => setTitle(evt.target.value)}
+        value={bookmark.title} 
+        onChange={(evt) => dispatch({
+          type: 'UPDATE_BOOKMARK',
+          payload: { title: evt.target.value }})}
          />
-      {/* <button ></button> */}
     <select 
         name="priority" id="edit-priority"
         className="update-bookmark-value"
-        onChange={evt => setPriority(evt.target.value)} 
+        value={bookmark.priority}
+        onChange={evt => dispatch({
+          type: 'UPDATE_BOOKMARK',
+          payload: { priority: evt.target.value }} 
+        )}
         >
         <option value="">_</option>
         <option value="A">A</option>
@@ -123,32 +67,37 @@ const handleSave = (id, bookmark) => {
         <option value="C">C</option>
         <option value="D">D</option>
     </select>
-      {/* <button ></button> */}
       <input 
         type="text" 
         id="edit-link" 
         className="update-bookmark-value"
         placeholder="Link" 
-        value={link} 
-        onChange={(evt) => setLink(evt.target.value)} />
-      {/* <button ></button> */}
+        value={bookmark.link} 
+        onChange={(evt) => dispatch({
+          type: 'UPDATE_BOOKMARK',
+          payload: { link: evt.target.value }})}
+        />
       <input 
         type="text" 
         id="edit-image" 
         className="update-bookmark-value" 
         placeholder="Image" 
-        value={image} 
-        onChange={(evt) => setImage(evt.target.value)} />
-      {/* <button ></button> */}
+        value={bookmark.image} 
+        onChange={(evt) => dispatch({
+          type: 'UPDATE_BOOKMARK',
+          payload: { image: evt.target.value }})}
+        />
       <textarea 
         name="Notes" 
         id="edit-notes" 
         className="update-bookmark-value"
         placeholder="Notes" 
-        value={notes} 
-        onChange={(evt) => setNotes(evt.target.value)} cols="60" rows="10">
+        value={bookmark.notes} 
+        onChange={(evt) => dispatch({
+          type: 'UPDATE_BOOKMARK',
+          payload: { notes: evt.target.value }})}
+        cols="60" rows="10">
         </textarea>
-      {/* <button ></button> */}
       <button type="submit" id="submit-changes">Submit changes</button>
       </form>
     </div>
