@@ -86,7 +86,8 @@ function SessionView() {
             <table>
                 <thead>
                     <tr>
-                        <th>Detail View</th>
+                        <th>Image</th>
+                        <th>Details</th>
                         <th>Title</th>
                         <th>Link</th>
                         <th>Priority</th>
@@ -96,6 +97,7 @@ function SessionView() {
                 <tbody className="bookmarks-list"> 
                     {bookmarks.map((bookmark) => (
                         <tr key={bookmark.id}>
+                            <td>{bookmark.image}</td>
                             <td>
                                 <Link 
                                     className='navLink' 

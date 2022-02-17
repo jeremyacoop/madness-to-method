@@ -32,8 +32,8 @@ function BookmarkDetail() {
           id: id,
           payload: mark
     })
-    // defineBookmark();
-    history.push('/bookmarks');
+    defineBookmark();
+    // history.push('/bookmarks');
   }
 
   return (

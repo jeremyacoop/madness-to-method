@@ -39,7 +39,7 @@ function* fetchBookmarkDetail(action) {
         let response = yield axios.get(`/bookmarks/${id}`, {id: id});
         console.log('Response:', response);
         yield put({
-            type:   'SET_BOOKMARKS',
+            type:   'SET_BOOKMARK',
             payload:    response.data
         });
     }
