@@ -1,0 +1,18 @@
+.update-bookmark-value {
+    margin: 10px;
+    width: 100ex;
+}
+
+#edit-priority {
+    margin: 10px;
+    width: 30px;
+}
+
+textarea {
+    margin: 10px;
+}
+
+.update-bookmark-value {
+    align-items: flex-start;
+    display: flex;
+}

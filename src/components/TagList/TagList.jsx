@@ -38,6 +38,9 @@ function TagList() {
                         </th>
                     </tr>
                 </thead>
+            <Link className='navLink' to='/createtag'>
+              Create Tag
+            </Link>
                 <tbody className="tag-list">
                     {tags.map((tag) => (
                         <tr key={tag.id}>
@@ -47,9 +50,6 @@ function TagList() {
                     ))}
                 </tbody>
             </table>
-            <Link className='navLink' to='/createtag'>
-              Create Tag
-            </Link>
 
         </section>
     );

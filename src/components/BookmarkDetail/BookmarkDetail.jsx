@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useHistory, useParams, useLocation, Link } from 'react-router-dom';
+import './BookmarkDetail.css';
 
 function BookmarkDetail() {
   const history = useHistory();
@@ -77,7 +78,7 @@ function BookmarkDetail() {
           type: 'UPDATE_BOOKMARK',
           payload: { link: evt.target.value }})}
         />
-      <input 
+      {/*<input 
         type="text" 
         id="edit-image" 
         className="update-bookmark-value" 
@@ -86,7 +87,7 @@ function BookmarkDetail() {
         onChange={(evt) => dispatch({
           type: 'UPDATE_BOOKMARK',
           payload: { image: evt.target.value }})}
-        />
+        />*/}
       <textarea 
         name="Notes" 
         id="edit-notes" 
@@ -96,7 +97,7 @@ function BookmarkDetail() {
         onChange={(evt) => dispatch({
           type: 'UPDATE_BOOKMARK',
           payload: { notes: evt.target.value }})}
-        cols="60" rows="10">
+        cols="88" rows="10">
         </textarea>
       <button type="submit" id="submit-changes">Submit changes</button>
       </form>

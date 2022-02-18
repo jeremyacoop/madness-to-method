@@ -4,11 +4,11 @@ const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
 router.get('/', rejectUnauthenticated, (req, res) => {
-  // GET route code here
   console.log('In bookmarks router GET');
-  const queryText = `SELECT * FROM "links"  
-                        WHERE "user_id" = $1
-                        ORDER BY "id" ASC;`;
+  const queryText = `
+    SELECT * FROM "links"  
+    WHERE "user_id" = $1
+      ORDER BY "id" ASC;`;
   const queryParams = [req.user.id];
   pool.query(queryText, queryParams)
   .then((result) => {
@@ -22,12 +22,12 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 router.get('/:id', rejectUnauthenticated, (req, res) => {
-  // GET route code here
   console.log('In bookmark router GET', req.params.id);
-  const queryText = `SELECT * FROM "links"  
-                        WHERE "id" = $1 
-                        AND "user_id" = $2;
-                        `;
+  const queryText = `
+    SELECT * FROM "links"  
+    WHERE "id" = $1 
+      AND "user_id" = $2;
+    `;
   const queryParams = [req.params.id, req.user.id];
   pool.query(queryText, queryParams)
   .then((result) => {
@@ -41,22 +41,19 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 
-// GET id for bookmark table view
-// router.get('/:id', rejectUnauthenticated, (req, res) => {
-//   console.log('In bookmarks router GET ')
-// })
 
-/**
- * POST route template
- */
 router.post('/', rejectUnauthenticated, (req, res) => {
-  // POST route code here
   console.log('In bookmarks router POST');
-  const queryText = `INSERT INTO "links"
-                        ("title", "link", "priority","notes", "user_id")
-                      VALUES 
-                        ($1, $2, $3, $4, $5)
-                        `;
+  const queryText = `
+    INSERT INTO "links"
+      ("title", 
+        "link", 
+        "priority",
+        "notes", 
+        "user_id")
+    VALUES 
+      ($1, $2, $3, $4, $5)
+    `;
   const queryParams = [req.body.title, req.body.link, req.body.priority, req.body.notes, req.user.id];
   pool.query(queryText, queryParams)
   .then((result) => {
@@ -70,9 +67,11 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 });
 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
-  const queryText = `DELETE FROM "links"
-                      WHERE "id" = $1
-                      AND "user_id" = $2`;
+  const queryText = `
+    DELETE FROM "links"
+    WHERE "id" = $1
+      AND "user_id" = $2
+    `;
   pool.query(queryText, [req.params.id, req.user.id])
   .then((dbRes) => {
     console.log('DELETE success', dbRes);
@@ -93,16 +92,14 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
       SET "title" = $1,
           "priority" = $2,
           "link" = $3,
-          "image" = $4,
-          "notes" = $5
-    WHERE "id" = $6
-      AND "user_id" = $7;
+          "notes" = $4
+    WHERE "id" = $5
+      AND "user_id" = $6;
     `;
   const queryParams = [
     req.body.title, 
     req.body.priority, 
     req.body.link, 
-    req.body.image, 
     req.body.notes, 
     req.body.id, 
     req.user.id
