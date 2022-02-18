@@ -30,9 +30,6 @@ function SessionsList() {
     return (
         <section>
             <div>
-            <Link className='navLink' to='/addsession'>
-              Add Session
-            </Link>
             </div>
             <table>
                 <thead>
@@ -42,6 +39,9 @@ function SessionsList() {
                         </th>
                     </tr>
                 </thead>
+            <Link className='navLink' to='/addsession'>
+              Add Session
+            </Link>
                 <tbody className="sessions-list">
                     {sessions.map((session) => (
                         <tr key={session.id}>

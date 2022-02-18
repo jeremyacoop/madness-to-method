@@ -37,6 +37,7 @@ function LoginForm() {
           Username:
           <input
             type="text"
+            className='login-input'
             name="username"
             required
             value={username}
@@ -48,6 +49,7 @@ function LoginForm() {
         <label htmlFor="password">
           Password:
           <input
+            className='login-input'
             type="password"
             name="password"
             required
@@ -57,7 +59,7 @@ function LoginForm() {
         </label>
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
+        <input className="btn login-input" type="submit" name="submit" value="Log In" />
       </div>
     </form>
   );

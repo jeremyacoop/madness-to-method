@@ -4,9 +4,10 @@ const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
 router.get('/', (req, res) => {
-  // GET route code here
   console.log('In sessions router GET');
-  const queryText = `SELECT * FROM "sessions";`;
+  const queryText = `
+    SELECT * FROM "sessions";
+    `;
   pool.query(queryText)
   .then((result) => {
     // console.log(result);
@@ -18,16 +19,14 @@ router.get('/', (req, res) => {
   })
 });
 
-/**
- * POST route template
- */
 router.post('/', rejectUnauthenticated, (req, res) => {
-  // POST route code here
   console.log('In sessions router POST');
-  const queryText = `INSERT INTO "sessions"
-                        ("title", "user_id")
-                      VALUES 
-                        ($1, $2)`;
+  const queryText = `
+    INSERT INTO "sessions"
+      ("title", "user_id")
+    VALUES 
+      ($1, $2)
+    `;
   const queryParams = [req.body.title, req.user.id];
   pool.query(queryText, queryParams)
   .then((result) => {
@@ -42,8 +41,10 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 });
 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
-  const queryText = `DELETE FROM "sessions"
-                      WHERE "id" = $1`;
+  const queryText = `
+    DELETE FROM "sessions"
+    WHERE "id" = $1
+    `;
   pool.query(queryText, [req.params.id])
   .then(() => {
     res.sendStatus(200);
@@ -56,10 +57,12 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 
 router.put('/:id', rejectUnauthenticated, (req, res) => {
   console.log('req.body.id:', req.body.id);
-  const queryText = `UPDATE "links"
-                        SET "session_id" = 1$
-                        WHERE "id" = $2
-                        AND "user_id" = $3;`;
+  const queryText = `
+    UPDATE "links"
+      SET "session_id" = 1$
+    WHERE "id" = $2
+      AND "user_id" = $3;
+    `;
   const queryParams = [req.body.value, req.body.id, req.user.id];
   
   pool.query(queryText, queryParams)

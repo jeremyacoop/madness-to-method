@@ -81,7 +81,7 @@ function AddBookmarkForm() {
                         <option value="C">C</option>
                         <option value="D">D</option>
                     </select>
-                    <label 
+                    {/*<label 
                     className="form-label"
                     htmlFor="bookmark-image">
                         Image
@@ -93,7 +93,7 @@ function AddBookmarkForm() {
                         placeholder="Image"
                         value={bookmarkImage} 
                         onChange={evt => setBookmarkImage(evt.target.value)} 
-                    />
+                    />*/}
                     <label 
                     className="form-label"
                     htmlFor="bookmark-notes">
