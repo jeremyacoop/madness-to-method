@@ -1,6 +1,5 @@
-.update-bookmark-value {
+textarea {
     margin: 10px;
-    width: 100ex;
 }
 
 #edit-priority {
@@ -8,11 +7,9 @@
     width: 30px;
 }
 
-textarea {
-    margin: 10px;
-}
-
 .update-bookmark-value {
     align-items: flex-start;
     display: flex;
+    margin: 10px;
+    width: 100ex;
 }

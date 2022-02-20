@@ -22,7 +22,7 @@ function BookmarkDetail() {
 
   useEffect(() => {
     defineBookmark();
-  }, []);
+  }, [id]);
 
   const handleSave = (evt, id, mark) => { 
     evt.preventDefault();

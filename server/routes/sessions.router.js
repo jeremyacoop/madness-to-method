@@ -3,12 +3,14 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
   console.log('In sessions router GET');
   const queryText = `
-    SELECT * FROM "sessions";
+    SELECT * FROM "sessions"
+    WHERE "user_id" = $1;
     `;
-  pool.query(queryText)
+  const queryParams = [req.user.id];
+  pool.query(queryText, queryParams)
   .then((result) => {
     // console.log(result);
     res.send(result.rows);
@@ -25,7 +27,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     INSERT INTO "sessions"
       ("title", "user_id")
     VALUES 
-      ($1, $2)
+      ($1, $2);
     `;
   const queryParams = [req.body.title, req.user.id];
   pool.query(queryText, queryParams)
@@ -40,10 +42,30 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
 });
 
+router.post('/addsession', rejectUnauthenticated, (req, res) => {
+  const queryText = `
+    INSERT INTO "link_sessions"
+      ("link_id", "session_id")
+    VALUES
+      ($1, $2);
+      `;
+  // update with user.id, look for join
+  const queryParams = [req.body.link_id, req.body.session_id];
+  pool.query(queryText, queryParams)
+  .then((result) => {
+    console.log('Session POST successful!');
+    res.sendStatus(201);
+  })
+  .catch((err => {
+    console.error(`POST session failed!`, err);
+    res.sendStatus(500);
+  }));
+})
+
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
   const queryText = `
     DELETE FROM "sessions"
-    WHERE "id" = $1
+    WHERE "id" = $1;
     `;
   pool.query(queryText, [req.params.id])
   .then(() => {
@@ -57,12 +79,12 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 
 router.put('/:id', rejectUnauthenticated, (req, res) => {
   console.log('req.body.id:', req.body.id);
-  const queryText = `
-    UPDATE "links"
-      SET "session_id" = 1$
-    WHERE "id" = $2
-      AND "user_id" = $3;
-    `;
+  // const queryText = `
+  //   UPDATE "links"
+  //     SET "session_id" = 1$
+  //   WHERE "id" = $2
+  //     AND "user_id" = $3;
+  //   `;
   const queryParams = [req.body.value, req.body.id, req.user.id];
   
   pool.query(queryText, queryParams)
