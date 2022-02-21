@@ -7,6 +7,10 @@ import Button from '@mui/material/Button';
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 import { ThreeDRotation } from '@mui/icons-material/ThreeDRotation';
 import SendIcon from '@mui/icons-material/Send';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 function BookmarkDetail() {
   const dispatch = useDispatch();
@@ -45,20 +49,32 @@ function BookmarkDetail() {
     <div>
       <h2>{heading}</h2>
       {console.log(bookmark)}
-      <form onSubmit={(evt) => handleSave(evt, id, bookmark)}  >
+      <Box 
+        component="form"
+        action="submit"
+        className="update-bookmark-form"
+        onSubmit={(evt) => handleSave(evt, id, bookmark)}  >
 
-      <input 
+      <TextField 
         type="text" 
         id="edit-title" 
         className="update-bookmark-value"
         placeholder="Title" 
+        variant="outlined"
         value={bookmark.title} 
         onChange={(evt) => dispatch({
           type: 'UPDATE_BOOKMARK',
           payload: { title: evt.target.value }})}
          />
-    <select 
-        name="priority" id="edit-priority"
+    <label 
+    className="form-label"
+    htmlFor="bookmark-priority">
+        Priority
+    </label>
+    <Select 
+        name="priority" 
+        id="edit-priority"
+        label="Priority"
         className="update-bookmark-value"
         value={bookmark.priority}
         onChange={evt => dispatch({
@@ -66,43 +82,48 @@ function BookmarkDetail() {
           payload: { priority: evt.target.value }} 
         )}
         >
-        <option value="">_</option>
-        <option value="A">A</option>
-        <option value="B">B</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-    </select>
-      <input 
+        <MenuItem value={""}>_</MenuItem>
+        <MenuItem value={"A"}>A</MenuItem>
+        <MenuItem value={"B"}>B</MenuItem>
+        <MenuItem value={"C"}>C</MenuItem>
+        <MenuItem value={"D"}>D</MenuItem>
+    </Select>
+      <TextField 
         type="text" 
         id="edit-link" 
         className="update-bookmark-value"
-        placeholder="Link" 
+        placeholder="Link URL" 
+        variant="outlined"
         value={bookmark.link} 
         onChange={(evt) => dispatch({
           type: 'UPDATE_BOOKMARK',
           payload: { link: evt.target.value }})}
         />
-      {/*<input 
+      {/*<TextField 
         type="text" 
         id="edit-image" 
         className="update-bookmark-value" 
         placeholder="Image" 
+        variant="outlined"
         value={bookmark.image} 
         onChange={(evt) => dispatch({
           type: 'UPDATE_BOOKMARK',
           payload: { image: evt.target.value }})}
         />*/}
-      <textarea 
+      <TextField 
+        type="textarea"
         name="Notes" 
         id="edit-notes" 
         className="update-bookmark-value"
         placeholder="Notes" 
+        multiline
+        variant="outlined"
         value={bookmark.notes} 
         onChange={(evt) => dispatch({
           type: 'UPDATE_BOOKMARK',
           payload: { notes: evt.target.value }})}
         cols="88" rows="10">
-        </textarea>
+        </TextField>
       <Button 
           type="submit"
           id="submit-changes"
@@ -110,7 +131,7 @@ function BookmarkDetail() {
           >
           Submit Changes
       </Button>
-      </form>
+      </Box>
     </div>
   );
 }

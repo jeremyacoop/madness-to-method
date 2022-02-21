@@ -53,14 +53,10 @@ function AddBookmarkForm() {
                     action="submit" 
                     className="add-bookmark-form" 
                     onSubmit={(evt) => addBookmark(evt)}>
-                    <label 
-                        className="form-label"
-                        htmlFor="bookmark-title">
-                            Title
-                    </label>
                     <TextField 
                         type="text" 
                         id="bookmark-title"
+                        label="Title"
                         className="form-control"
                         placeholder="Title"
                         variant="outlined"
@@ -70,25 +66,12 @@ function AddBookmarkForm() {
                     />
                     <label 
                     className="form-label"
-                    htmlFor="bookmark-url">Link</label>
-                    <TextField 
-                        type="text" 
-                        id="bookmark-url"
-                        className="form-control"
-                        placeholder="Link URL"
-                        variant="outlined"
-                        value={bookmarkLink} 
-                        onChange={evt => setBookmarkLink(evt.target.value)} 
-                        required
-                    />
-                    <label 
-                    className="form-label"
                     htmlFor="bookmark-priority">
                         Priority
                     </label>
                     <Select 
-                        name="priority" 
                         id="item-priority"
+                        label="Priority"
                         className="form-control"
                         onChange={evt => setBookmarkPriority(evt.target.value)} 
                         >
@@ -98,13 +81,24 @@ function AddBookmarkForm() {
                         <MenuItem value={'C'}>C</MenuItem>
                         <MenuItem value={'D'}>D</MenuItem>
                     </Select>
+                    <TextField 
+                        type="text" 
+                        id="bookmark-url"
+                        label="Link URL"
+                        className="form-control"
+                        placeholder="Link URL"
+                        variant="outlined"
+                        value={bookmarkLink} 
+                        onChange={evt => setBookmarkLink(evt.target.value)} 
+                        required
+                    />
                     {/*<label 
                     className="form-label"
                     htmlFor="bookmark-image">
                         Image
                     </label>
                     <TextField 
-                        type="textarea" 
+                        type="text" 
                         id="bookmark-image"
                         className="form-control"
                         placeholder="Image"
@@ -112,14 +106,10 @@ function AddBookmarkForm() {
                         value={bookmarkImage} 
                         onChange={evt => setBookmarkImage(evt.target.value)} 
                     />*/}
-                    <label 
-                    className="form-label"
-                    htmlFor="bookmark-notes">
-                        Notes
-                    </label>
                     <TextField 
                         type="textarea" 
                         id="bookmark-notes"
+                        label="Notes"
                         className="form-control"
                         placeholder="Notes"
                         multiline 

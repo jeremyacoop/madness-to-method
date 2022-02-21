@@ -1,15 +1,24 @@
-textarea {
+#edit-title {
     margin: 10px;
+    width: 100ex;
+}
+
+#edit-link {
+    margin: 10px;
+    width: 100ex;
 }
 
 #edit-priority {
     margin: 10px;
-    width: 30px;
+    width: 20px;
+}
+
+#edit-notes {
+    margin: 10px;
+    width: 100ex;
 }
 
 .update-bookmark-value {
     align-items: flex-start;
     display: flex;
-    margin: 10px;
-    width: 100ex;
 }
