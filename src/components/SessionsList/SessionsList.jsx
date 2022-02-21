@@ -1,6 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
+// Material-ui
+import Button from '@mui/material/Button';
+import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
+import { ThreeDRotation } from '@mui/icons-material/ThreeDRotation';
+import DeleteIcon from '@mui/icons-material/DeleteSharp';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 function SessionsList() {
     const dispatch = useDispatch();
@@ -31,26 +43,35 @@ function SessionsList() {
         <section>
             <div>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>
+            <TableContainer>
+            <Table sx={{ maxWidth: 300 }}>
+                <TableHead>
+                    <TableRow>
+                        <TableCell>
                             <h2>{heading}</h2>
-                        </th>
-                    </tr>
-                </thead>
+                        </TableCell>
+                    </TableRow>
+                </TableHead>
             <Link className='navLink' to='/addsession'>
               Add Session
             </Link>
-                <tbody className="sessions-list">
+                <TableBody className="sessions-list">
                     {sessions.map((session) => (
-                        <tr key={session.id}>
-                            <td>{session.title}</td>
-                            <td><button onClick={evt => deleteSession(session.id)}>X</button></td>
-                        </tr>
+                        <TableRow key={session.id}>
+                            <TableCell>{session.title}</TableCell>
+                            <TableCell>
+                                <Button
+                                color="primary"
+                                startIcon={<DeleteIcon />}
+                                onClick={evt => deleteSession(session.id)}
+                                >
+                                </Button>
+                                </TableCell>
+                        </TableRow>
                     ))}
-                </tbody>
-            </table>
+                </TableBody>
+            </Table>
+            </TableContainer>
 
         </section>
     );

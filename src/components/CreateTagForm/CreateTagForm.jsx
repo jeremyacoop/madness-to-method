@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 // import './CreateTagForm.css';
+// Material-ui
+import Button from '@mui/material/Button';
+import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
+import { ThreeDRotation } from '@mui/icons-material/ThreeDRotation';
+import SendIcon from '@mui/icons-material/Send';
 
 function CreateTagForm() {
     const dispatch = useDispatch();
@@ -41,7 +46,12 @@ function CreateTagForm() {
                         value={tagCategory} 
                         onChange={evt => setTagCategory(evt.target.value)} 
                     />
-                    <button type="submit">Create Tag</button>
+                    <Button 
+                        type="submit"
+                        endIcon={<SendIcon />}
+                        >
+                        Create Tag
+                    </Button>
               </form>
           </div>
       </div>

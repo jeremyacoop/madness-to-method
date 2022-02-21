@@ -1,5 +1,21 @@
-select {
+#bookmark-title {
     margin: 10px;
+    width: 80ex;
+}
+
+#bookmark-url {
+    margin: 10px;
+    width: 100ex;
+}
+
+#bookmark-priority {
+    margin: 10px;
+    width: 20px;
+}
+
+#bookmark-notes {
+    margin: 10px;
+    width: 100ex;
 }
 
 .form-label {
@@ -8,18 +24,6 @@ select {
 }
 
 .form-control {
+    align-items: flex-start;
     display: flex;
-    align-items: center;
-}
-
-/* #bookmark-title {
-    margin: 10px;
-} */
-
-/* #bookmark-url {
-    margin: 10px;
-} */
-
-#bookmark-notes {
-    margin: 10px;
 }

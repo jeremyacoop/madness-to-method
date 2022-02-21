@@ -2,8 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { connect, useSelector, useDispatch } from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { useHistory, useParams } from 'react-router-dom';
-import BookmarkDetail from '../BookmarkDetail/BookmarkDetail';
 import './SessionView.css';
+// Material-ui
+// import { makeStyles } from '@material-ui/core/styles';
+import Button from '@mui/material/Button';
+import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
+import { ThreeDRotation } from '@mui/icons-material/ThreeDRotation';
+import DeleteIcon from '@mui/icons-material/DeleteSharp';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 function SessionView() {
     const dispatch = useDispatch();
@@ -83,22 +95,41 @@ function SessionView() {
                 >
               Add Bookmark
             </Link>
-            <table>
-                <thead>
-                    <tr>
+            <TableContainer>
+            <Table>
+                <TableHead>
+                    <TableRow>
                         {/* <th>Image</th> */}
-                        <th>Details</th>
-                        <th>Title</th>
-                        <th>Link</th>
-                        <th>Priority</th>
-                        <th>Notes</th>
-                    </tr>
-                </thead>
-                <tbody className="bookmarks-list"> 
+                        <TableCell 
+                            align="center" >
+                                <h4>Details</h4>
+                        </TableCell>
+                        <TableCell 
+                            align="center" >
+                                <h4>Title</h4>
+                        </TableCell>
+                        <TableCell 
+                            align="center" >
+                                <h4>Link</h4>
+                        </TableCell>
+                        <TableCell 
+                            align="center" >
+                                <h4>Priority</h4>
+                        </TableCell>
+                        <TableCell 
+                            align="center" >
+                                <h4>Notes</h4>
+                        </TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody 
+                    className="bookmarks-list" > 
                     {bookmarks.map((bookmark) => (
-                        <tr key={bookmark.id}>
-                            {/* <td>{bookmark.image}</td> */}
-                            <td>
+                        <TableRow key={bookmark.id}
+                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                        >
+                            {/* <TableCell>{bookmark.image}</TableCell> */}
+                            <TableCell>
                                 <Link 
                                     className='navLink' 
                                     id="detail-edit"
@@ -107,32 +138,34 @@ function SessionView() {
                                     >
                                         Details
                                 </Link>
-                            </td>
-                            <td>
+                            </TableCell>
+                            <TableCell>
                                 <a target="_blank" href={bookmark.link}>
                                     {bookmark.title}
                                 </a>
-                            </td>
-                            <td>{bookmark.link}</td>
-                            {/* <td>
+                            </TableCell>
+                            <TableCell>{bookmark.link}</TableCell>
+                            {/* <TableCell>
                                 { <input 
                                     type="checkbox" 
                                     onClick={evt => 
                                     handleChecked(bookmark.id)} 
                                     defaultChecked={checked} /> }
-                            </td> */}
-                            <td>{bookmark.priority}</td>
-                            <td>{bookmark.notes}</td>
-                            <td>
-                                <button 
+                            </TableCell> */}
+                            <TableCell>{bookmark.priority}</TableCell>
+                            <TableCell>{bookmark.notes}</TableCell>
+                            <TableCell>
+                                <Button
+                                    color="primary"
+                                    startIcon={<DeleteIcon />}
                                     onClick={evt => deleteBookmark(bookmark.id)}>
-                                    DELETE
-                                </button>
-                                    </td>
-                        </tr>
+                                </Button>
+                                    </TableCell>
+                        </TableRow>
                     ))}
-                </tbody>
-            </table>
+                </TableBody>
+            </Table>
+            </TableContainer>
         </>
     )
 }
