@@ -2,9 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useHistory, useParams, useLocation, Link } from 'react-router-dom';
 import './BookmarkDetail.css';
+// Material-ui
+import Button from '@mui/material/Button';
+import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
+import { ThreeDRotation } from '@mui/icons-material/ThreeDRotation';
+import SendIcon from '@mui/icons-material/Send';
 
 function BookmarkDetail() {
-  const history = useHistory();
   const dispatch = useDispatch();
   const id = useParams().id;
   const bookmark = useSelector(store => store.bookmarks);
@@ -99,7 +103,13 @@ function BookmarkDetail() {
           payload: { notes: evt.target.value }})}
         cols="88" rows="10">
         </textarea>
-      <button type="submit" id="submit-changes">Submit changes</button>
+      <Button 
+          type="submit"
+          id="submit-changes"
+          endIcon={<SendIcon />}
+          >
+          Submit Changes
+      </Button>
       </form>
     </div>
   );

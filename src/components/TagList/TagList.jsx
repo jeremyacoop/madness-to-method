@@ -1,6 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
+// Material-ui
+import Button from '@mui/material/Button';
+import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
+import { ThreeDRotation } from '@mui/icons-material/ThreeDRotation';
+import DeleteIcon from '@mui/icons-material/DeleteSharp';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 function TagList() {
     const dispatch = useDispatch();
@@ -30,26 +42,36 @@ function TagList() {
         <section>
             <div>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>
+            <TableContainer>
+            <Table sx={{ maxWidth: 300 }}>
+                <TableHead>
+                    <TableRow>
+                        <TableCell>
                             <h2>{heading}</h2>
-                        </th>
-                    </tr>
-                </thead>
+                        </TableCell>
+                    </TableRow>
+                </TableHead>
             <Link className='navLink' to='/createtag'>
               Create Tag
             </Link>
-                <tbody className="tag-list">
+                <TableBody className="tag-list">
                     {tags.map((tag) => (
-                        <tr key={tag.id}>
-                            <td>{tag.tagCategory}</td>
-                            <td><button onClick={evt => deleteTag(tag.id)}>X</button></td>
-                        </tr>
+                        <TableRow key={tag.id}>
+                            <TableCell>{tag.tagCategory}</TableCell>
+                            <TableCell>
+                                <Button
+                                color="primary"
+                                startIcon={<DeleteIcon />}
+                                onClick={evt => deleteTag(tag.id)}
+                                >
+
+                                </Button>
+                                </TableCell>
+                        </TableRow>
                     ))}
-                </tbody>
-            </table>
+                </TableBody>
+            </Table>
+            </TableContainer>
 
         </section>
     );

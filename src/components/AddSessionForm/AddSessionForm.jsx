@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 // import './AddSessionForm.css';
+// Material-ui
+import Button from '@mui/material/Button';
+import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
+import { ThreeDRotation } from '@mui/icons-material/ThreeDRotation';
+import SendIcon from '@mui/icons-material/Send';
 
 function AddSessionForm() {
     const dispatch = useDispatch();
@@ -41,7 +46,12 @@ function AddSessionForm() {
                         value={sessionTitle} 
                         onChange={evt => setSessionTitle(evt.target.value)} 
                     />
-                    <button type="submit">Add Session</button>
+                    <Button 
+                        type="submit"
+                        endIcon={<SendIcon />}
+                        >
+                        Add Session
+                    </Button>
               </form>
           </div>
       </div>

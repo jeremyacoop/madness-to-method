@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import './AddBookmarkForm.css';
+// Material-ui
+import Button from '@mui/material/Button';
+import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
+import { ThreeDRotation } from '@mui/icons-material/ThreeDRotation';
+import SendIcon from '@mui/icons-material/Send';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 function AddBookmarkForm() {
     const dispatch = useDispatch();
@@ -39,28 +48,35 @@ function AddBookmarkForm() {
       <div>
         <h2>{heading}</h2>
             <div>
-                <form action="submit" className="add-bookmark-form" onSubmit={(evt) => addBookmark(evt)}>
+                < Box 
+                    component="form" 
+                    action="submit" 
+                    className="add-bookmark-form" 
+                    onSubmit={(evt) => addBookmark(evt)}>
                     <label 
                         className="form-label"
                         htmlFor="bookmark-title">
                             Title
                     </label>
-                    <input 
+                    <TextField 
                         type="text" 
                         id="bookmark-title"
                         className="form-control"
                         placeholder="Title"
+                        variant="outlined"
                         value={bookmarkTitle} 
                         onChange={evt => setBookmarkTitle(evt.target.value)} 
+                        required
                     />
                     <label 
                     className="form-label"
                     htmlFor="bookmark-url">Link</label>
-                    <input 
+                    <TextField 
                         type="text" 
                         id="bookmark-url"
                         className="form-control"
                         placeholder="Link URL"
+                        variant="outlined"
                         value={bookmarkLink} 
                         onChange={evt => setBookmarkLink(evt.target.value)} 
                         required
@@ -70,27 +86,29 @@ function AddBookmarkForm() {
                     htmlFor="bookmark-priority">
                         Priority
                     </label>
-                    <select 
-                        name="priority" id="item-priority"
+                    <Select 
+                        name="priority" 
+                        id="item-priority"
                         className="form-control"
                         onChange={evt => setBookmarkPriority(evt.target.value)} 
                         >
-                        <option value="">_</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                    </select>
+                        <MenuItem value={''}>_</MenuItem>
+                        <MenuItem value={'A'}>A</MenuItem>
+                        <MenuItem value={'B'}>B</MenuItem>
+                        <MenuItem value={'C'}>C</MenuItem>
+                        <MenuItem value={'D'}>D</MenuItem>
+                    </Select>
                     {/*<label 
                     className="form-label"
                     htmlFor="bookmark-image">
                         Image
                     </label>
-                    <input 
+                    <TextField 
                         type="textarea" 
-                        id="bookmark-notes"
+                        id="bookmark-image"
                         className="form-control"
                         placeholder="Image"
+                        variant="outlined"
                         value={bookmarkImage} 
                         onChange={evt => setBookmarkImage(evt.target.value)} 
                     />*/}
@@ -99,16 +117,23 @@ function AddBookmarkForm() {
                     htmlFor="bookmark-notes">
                         Notes
                     </label>
-                    <input 
+                    <TextField 
                         type="textarea" 
                         id="bookmark-notes"
                         className="form-control"
                         placeholder="Notes"
+                        multiline 
+                        variant="outlined"
                         value={bookmarkNotes} 
                         onChange={evt => setBookmarkNotes(evt.target.value)} 
                     />
-                    <button type="submit">Add Bookmark</button>
-              </form>
+                    <Button 
+                        type="submit"
+                        endIcon={<SendIcon />}
+                        >
+                        Add Bookmark
+                    </Button>
+              </Box>
           </div>
       </div>
     );
