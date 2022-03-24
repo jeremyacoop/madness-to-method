@@ -1,7 +1,5 @@
 
-![License](https://img.shields.io/github/license/jeremyacoop/https://github.com/jeremyacoop/prime-solo-project.svg?style=for-the-badge) ![Repo Size](https://img.shields.io/github/languages/code-size/jeremyacoop/https://github.com/jeremyacoop/prime-solo-project.svg?style=for-the-badge) ![TOP_LANGUAGE](https://img.shields.io/github/languages/top/jeremyacoop/https://github.com/jeremyacoop/prime-solo-project.svg?style=for-the-badge) ![FORKS](https://img.shields.io/github/forks/jeremyacoop/https://github.com/jeremyacoop/prime-solo-project.svg?style=for-the-badge&social) ![Stars](https://img.shields.io/github/stars/jeremyacoop/https://github.com/jeremyacoop/prime-solo-project.svg?style=for-the-badge)
-    
-# Madness to Method
+# REVEAL
 
 ## Table of Contents
 
@@ -11,56 +9,86 @@
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
-- [License](#license)
+- [Credits](#credits)
 - [Acknowledgements](#acknowledgements)
 - [Contacts](#contacts)
 
 ## Description
 
-I really feel that in many ways the internet is terrible for research. Obviously it’s revolutionized research in uncountable ways, but in ways that I would hope others would agree are largely pretty mixed. One specific shortcoming for me is that, while the internet is great for finding information, it is terrible for sorting and prioritizing it. The best tools we are usually given are things like browser history, bookmarks, and pdf’s, which we are left to find our own way to keep track of. To do this, we usually have to go searching for them, assuming we can remember exactly what we’re searching for. I’ve found bookmarks to be useful, but the simple hierarchical folder trees we store them in just aren’t up to the task if we’re dealing with a large number of links. So we’re just left to lose things, or forget we even have them, under a messy stack of url’s. 
-I think there are better ways to do this. So here, I am offering my take on a solution: Madness to Method. With one login account, and a combination of tag categories and sessions for specific goals, a user can have access to a variety of intuitive ways to keep their mind on just what direction they are going in with all this data. 
+Reveal is a collaborative group project, see credits below.
 
-- [Screenshots](#screenshots)
+Consumers are increasingly concerned about the environmental, social, and political impacts of their purchases. They want to support companies which align with their values and penalize companies which don’t. However, the status quo of inaccessible information, misleading claims, and corporate virtue signaling largely prevents consumers from easily using their purchasing power to make change. 
 
-## Screenshots
-
-<img src="./Screen_Shot_2022-03-24.png" />
+Reveal, a nonprofit startup, hopes to change that. At its core, the platform will enable consumers to make a difference with what they buy. The website, browser extension, and phone app will provide users with the information they need to determine whether a company actually deserves their money. More importantly, it will amplify their impact through incentivising direct engagement with companies, legislators, and communities of conscious consumers.
 
 ## Built With
 
-<a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" height="40px" width="40px" /></a><a href="https://developer.mozilla.org/en-US/docs/Web/HTML"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" height="40px" width="40px" /></a><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" height="40px" width="40px" /></a><a href="https://material-ui.com/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/materialui/materialui-original.svg" height="40px" width="40px" /></a><a href="https://nodejs.org/en/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" height="40px" width="40px" /></a><a href="https://www.postgresql.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" height="40px" width="40px" /></a><a href="https://reactjs.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" height="40px" width="40px" /></a><a href="https://redux.js.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg" height="40px" width="40px" /></a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" height="40px" width="40px" /></a><a href="https://www.heroku.com/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/heroku/heroku-original.svg" height="40px" width="40px" /></a><a href="https://developer.mozilla.org/en-US/docs/Web/HTML"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" height="40px" width="40px" /></a><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" height="40px" width="40px" /></a><a href="https://material-ui.com/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/materialui/materialui-original.svg" height="40px" width="40px" /></a><a href="https://nodejs.org/en/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" height="40px" width="40px" /></a><a href="https://www.postgresql.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" height="40px" width="40px" /></a><a href="https://reactjs.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" height="40px" width="40px" /></a><a href="https://redux.js.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg" height="40px" width="40px" /></a>
 
-## Getting Started
+# Getting Started
+This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
-This version uses React, Redux, Express, Passport, and PostgreSQL (full list of dependencies can be found in `package.json`).
 
-### Prerequisites
+## Prerequisites
 
-  - [Node.js](https://nodejs.org/en/)
-  - [PostgreSQL](https://www.postgresql.org/)
-  - [Nodemon](https://nodemon.io/)
+Before you get started, make sure you have the following software installed on your computer:
+
+- [Node.js](https://nodejs.org/en/)
+- [PostrgeSQL](https://www.postgresql.org/)
+- [Nodemon](https://nodemon.io/)
 
 ### Installation
 
-Create a database named prime_app,
-The queries in the tables.sql file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. The project is built on Postgres, so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries,
-Open up your editor of choice and run an npm install
-Run npm run server in your terminal
-Run npm run client in your terminal
-The npm run client command will open up a new browser tab for you!
+- Run `npm install`
+- Create a `.env` file at the root of the project and paste this line into the file:
+  ```
+  SERVER_SESSION_SECRET=superDuperSecret
+  ```
+  While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
+- Start postgres if not running already by using `brew services start postgresql`
+- Run `npm run database`
+- Run `npm run demoRules`
+- Run `npm run server`
+- Run `npm run client`
+- Navigate to `localhost:3000`
+
+## Heroku Deployment
+
+To download the source code onto your computer to make changes to the website:
+
+Required dependencies to run the website locally:
+- NodeJS
+- PostgreSQL
+- Recommended to use VSCode to edit code, with built in terminal / powershell
+
+  - Log into the provided Github account or your own personal code.
+  - If using your own github account, Fork the repository to your own profile. 
+  - Click the green Code button, and then Clone HTTPS.
+  - Run >>> git clone https://github.com/Reveal-nonprofit/reveal-group-project.git <<< in your desired directory to clone the code from the website to your local computer
+  - Run npm install in the terminal to set up required libraries / dependencies.
+  - Run npm run database in terminal to setup database.
+  - Run npm run demoRules (to populate the application with example rules for demonstration purposes)
 
 ## Usage
 
-First, register as a new user. ___
+Register as a new user. If you want admin access, you will have to edit your database and set 'auth_level' for the admin user to 1. This will add new functionality to the application, including viewing messages, viewing user information, and most importantly, adding new rules to the database so that the scores have more functionality. The more rules that are added, the more accuracy that the scores will have.
 
+## API
 
-## License
+we use 
 
-<a href="https://choosealicense.com/licenses/mit/"><img src="https://raw.githubusercontent.com/johnturner4004/readme-generator/master/src/components/assets/images/mit.svg" height=40 />MIT License</a>
+## Algorithm 
+
+## Credits
+
+James Petran https://github.com/jamespetran
+Desiree Quade https://github.com/NekoPrim
+Chris Agbolade https://github.com/yemluck
+Jeremy Cooper (this page)
 
 ## Acknowledgements
 
 
 ## Contacts
 
-<a href="https://www.linkedin.com/in/jeremy-cooper-848911230/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>  <a href="mailto:"><img src=https://raw.githubusercontent.com/johnturner4004/readme-generator/master/src/components/assets/images/email_me_button_icon_151852.svg /></a>
+
