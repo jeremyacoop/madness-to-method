@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect, useSelector, useDispatch } from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { useHistory, useParams } from 'react-router-dom';
@@ -95,8 +95,8 @@ function SessionView() {
                 >
               Add Bookmark
             </Link>
-            <TableContainer>
-            <Table>
+            <TableContainer >
+            <Table >
                 <TableHead>
                     <TableRow>
                         {/* <th>Image</th> */}
