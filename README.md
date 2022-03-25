@@ -17,6 +17,9 @@
 
 ## Description
 
+
+A bookmark mananger specifically oriented for sorting and prioritizing large collections of links to complete specific tasks.
+
 I really feel that in many ways the internet is terrible for research. Obviously it’s revolutionized research in uncountable ways, but in ways that I would hope others would agree are largely pretty mixed. One specific shortcoming for me is that, while the internet is great for finding information, it is terrible for sorting and prioritizing it. The best tools we are usually given are things like browser history, bookmarks, and pdf’s, which we are left to find our own way to keep track of. To do this, we usually have to go searching for them, assuming we can remember exactly what we’re searching for. I’ve found bookmarks to be useful, but the simple hierarchical folder trees we store them in just aren’t up to the task if we’re dealing with a large number of links. So we’re just left to lose things, or forget we even have them, under a messy stack of url’s. 
 I think there are better ways to do this. So here, I am offering my take on a solution: Madness to Method. With one login account, and a combination of tag categories and sessions for specific goals, a user can have access to a variety of intuitive ways to keep their mind on just what direction they are going in with all this data. 
 
