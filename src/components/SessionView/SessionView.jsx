@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect, useSelector, useDispatch } from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
-import { useHistory, useParams } from 'react-router-dom';
+// import { useHistory, useParams } from 'react-router-dom';
 import './SessionView.css';
 // Material-ui
 // import { makeStyles } from '@material-ui/core/styles';
@@ -19,9 +19,9 @@ import Paper from '@mui/material/Paper';
 
 function SessionView() {
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
     // const { id } = useParams();
-    const bookmarks = useSelector(store => store.bookmarks);
+    const bookmarks = useSelector(store => store.bookmarks.bookmarksReducer);
     // const [checked, setChecked] = useState(false);
 
     const fetchBookmarks = () => {
@@ -88,6 +88,7 @@ function SessionView() {
 
     return (
         <>
+        {console.log(bookmarks)}
             <h3>Bookmark Session</h3>
             <Link 
                 className='navLink' 

@@ -10,18 +10,24 @@ const bookmarksReducer = (state = [], action) => {
         //     return action.payload;
         // case    'UPDATE_BOOKMARK':
         //     return {...state, ...action.payload};
-        //     default: return state;
+            default: return state;
     }
 }
 
-const bookmarkDetailReducer = (state = {}, action) => {
+const bookmarkDetailsReducer = (state = {}, action) => {
     switch (action.type) {
         case    'SET_BOOKMARK':
             return action.payload;
         case    'UPDATE_BOOKMARK':
             return {...state, ...action.payload};
+        // case    'BOOKMARK_IMPORTANT':
+        //     return state, action.payload.importantMark //pseudocode
             default: return state;
     }
 }
 
-export default bookmarksReducer;
+// export default bookmarksReducer;
+export default combineReducers({
+    bookmarksReducer,
+    bookmarkDetailsReducer,
+});
