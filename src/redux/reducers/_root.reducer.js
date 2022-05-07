@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
 import bookmarks from './bookmarks.reducer';
+import bookmarkDetails from './bookmarks.reducer';
 import sessions from './sessions.reducer';
 import tags from './tags.reducer';
 
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
   bookmarks,
+  bookmarkDetails,
   sessions,
   tags,
 });

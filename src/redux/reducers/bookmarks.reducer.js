@@ -6,6 +6,16 @@ const bookmarksReducer = (state = [], action) => {
             return action.payload;
         // case    'BOOKMARK_IMPORTANT':
         //     return state, action.payload.importantMark //pseudocode
+        // case    'SET_BOOKMARK':
+        //     return action.payload;
+        // case    'UPDATE_BOOKMARK':
+        //     return {...state, ...action.payload};
+        //     default: return state;
+    }
+}
+
+const bookmarkDetailReducer = (state = {}, action) => {
+    switch (action.type) {
         case    'SET_BOOKMARK':
             return action.payload;
         case    'UPDATE_BOOKMARK':
