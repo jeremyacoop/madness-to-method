@@ -1,21 +1,24 @@
 #bookmark-title {
+    height: 0.01em;
     margin: 10px;
-    width: 80ex;
+    width: 105ex;
 }
 
 #bookmark-url {
+    height: 0.01em;
     margin: 10px;
-    width: 100ex;
+    width: 99ex;
 }
 
 #bookmark-priority {
     margin: 10px;
-    width: 20px;
+    padding-right: 20px;
+    width: 12px;
 }
 
 #bookmark-notes {
     margin: 10px;
-    width: 100ex;
+    width: 105ex;
 }
 
 .form-label {

@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 function BookmarkDetail() {
   const dispatch = useDispatch();
   const id = useParams().id;
-  const bookmark = useSelector(store => store.bookmarks);
+  const bookmark = useSelector(store => store.bookmarkDetails);
   const [heading, setHeading] = useState('');
   // const [editField, setEditField] = useState(false);
   // const [tag, setTag] = useState('');
@@ -46,7 +46,7 @@ function BookmarkDetail() {
   }
 
   return (
-    <div>
+    <div className="details-page">
       <h2>{heading}</h2>
       {console.log(bookmark)}
       <Box 
@@ -122,7 +122,7 @@ function BookmarkDetail() {
         onChange={(evt) => dispatch({
           type: 'UPDATE_BOOKMARK',
           payload: { notes: evt.target.value }})}
-        cols="88" rows="10">
+        cols="92" rows="8">
         </TextField>
       <Button 
           type="submit"

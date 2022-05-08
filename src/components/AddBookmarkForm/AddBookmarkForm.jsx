@@ -116,6 +116,7 @@ function AddBookmarkForm() {
                         variant="outlined"
                         value={bookmarkNotes} 
                         onChange={evt => setBookmarkNotes(evt.target.value)} 
+                        cols="92" rows="8"
                     />
                     <Button 
                         type="submit"

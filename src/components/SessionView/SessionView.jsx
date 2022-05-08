@@ -17,11 +17,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
+// SessionView is the bookmarks list view
 function SessionView() {
     const dispatch = useDispatch();
     // const history = useHistory();
     // const { id } = useParams();
-    const bookmarks = useSelector(store => store.bookmarks.bookmarksReducer);
+    const bookmarks = useSelector(store => store.bookmarks);
     // const [checked, setChecked] = useState(false);
 
     const fetchBookmarks = () => {
@@ -121,7 +122,7 @@ function SessionView() {
                             align="center" >
                                 <h4>Notes</h4>
                         </TableCell>
-                    </TableRow>
+                    </TableRow >
                 </TableHead>
                 <TableBody 
                     className="bookmarks-list" > 
